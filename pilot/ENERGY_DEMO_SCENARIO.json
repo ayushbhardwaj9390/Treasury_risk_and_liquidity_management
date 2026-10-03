@@ -1,0 +1,102 @@
+{
+  "kind": "SYNTHETIC",
+  "company_example": "Shell-inspired fictional energy trading pilot",
+  "as_of": "2026-10-03",
+  "reporting_currency": "USD",
+  "opening_cash": [
+    {
+      "account": "DEMO_USD_001",
+      "currency": "USD",
+      "amount": "25000000"
+    },
+    {
+      "account": "DEMO_GBP_001",
+      "currency": "GBP",
+      "amount": "4000000"
+    },
+    {
+      "account": "DEMO_SGD_001",
+      "currency": "SGD",
+      "amount": "6000000"
+    }
+  ],
+  "cashflows": [
+    {
+      "id": "DEMO_CRUDE_PURCHASE",
+      "date": "2026-10-07",
+      "direction": "OUTFLOW",
+      "currency": "USD",
+      "amount": "18000000",
+      "purpose": "Fictional crude cargo purchase"
+    },
+    {
+      "id": "DEMO_DIESEL_SALE",
+      "date": "2026-10-10",
+      "direction": "INFLOW",
+      "currency": "USD",
+      "amount": "22000000",
+      "purpose": "Fictional diesel sale"
+    },
+    {
+      "id": "DEMO_FREIGHT",
+      "date": "2026-10-08",
+      "direction": "OUTFLOW",
+      "currency": "USD",
+      "amount": "1500000",
+      "purpose": "Fictional freight and insurance"
+    },
+    {
+      "id": "DEMO_UK_OPERATIONS",
+      "date": "2026-10-12",
+      "direction": "OUTFLOW",
+      "currency": "GBP",
+      "amount": "1200000",
+      "purpose": "Fictional operating costs"
+    },
+    {
+      "id": "DEMO_SG_OPERATIONS",
+      "date": "2026-10-12",
+      "direction": "OUTFLOW",
+      "currency": "SGD",
+      "amount": "2000000",
+      "purpose": "Fictional operating costs"
+    }
+  ],
+  "stress_cases": [
+    {
+      "id": "RECEIPT_DELAY",
+      "change": "Delay diesel-sale receipt by 10 calendar days"
+    },
+    {
+      "id": "CARGO_COST_UP",
+      "change": "Increase crude purchase cost by 20 percent"
+    },
+    {
+      "id": "USD_FUNDING_PRESSURE",
+      "change": "Increase USD value of non-USD operating costs by 10 percent"
+    }
+  ],
+  "limitations": [
+    "Illustrative amounts, dates and company structure only",
+    "No live market prices, bank/ERP connectivity or certifications",
+    "No physical inventory, commodity hedge valuation, tax or legal approval implied"
+  ],
+  "calculation_assumptions": {
+    "fx_usd_per_unit": {
+      "USD": "1",
+      "GBP": "1.25",
+      "SGD": "0.80"
+    },
+    "minimum_cash_usd": {
+      "DEMO_UK_ENERGY": "10000000",
+      "DEMO_SINGAPORE_TRADING": "5000000"
+    },
+    "functional_currency": "USD",
+    "restricted_cash": "0",
+    "committed_outflows": "0",
+    "credit_facilities": "NONE",
+    "receipt_probability": "1",
+    "forecast_weeks": 13,
+    "aggregation": "WEEKLY; does not demonstrate intraday solvency"
+  }
+}

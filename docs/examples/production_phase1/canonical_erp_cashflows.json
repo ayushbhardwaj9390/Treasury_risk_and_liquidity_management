@@ -1,0 +1,16 @@
+{
+  "connector_code": "SAP_S4_FINANCE",
+  "schema_version": "1.0",
+  "records": [
+    {
+      "external_id": "AR-1001",
+      "entity_external_id": "US01",
+      "flow_type": "RECEIVABLE",
+      "currency": "USD",
+      "amount": 250000.00,
+      "due_date": "2026-10-03",
+      "probability": 0.98,
+      "counterparty": "Demo Customer"
+    }
+  ]
+}

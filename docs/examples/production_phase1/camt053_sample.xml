@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.08">
+  <BkToCstmrStmt>
+    <Stmt>
+      <Id>DEMO-STMT-001</Id>
+      <Acct><Id><Othr><Id>DEMO-US-001</Id></Othr></Id><Ccy>USD</Ccy></Acct>
+      <Bal><Tp><CdOrPrtry><Cd>CLBD</Cd></CdOrPrtry></Tp><Amt Ccy="USD">12500000.00</Amt><CdtDbtInd>CRDT</CdtDbtInd></Bal>
+      <Bal><Tp><CdOrPrtry><Cd>CLAV</Cd></CdOrPrtry></Tp><Amt Ccy="USD">12000000.00</Amt><CdtDbtInd>CRDT</CdtDbtInd></Bal>
+      <Ntry><Amt Ccy="USD">250000.00</Amt><CdtDbtInd>CRDT</CdtDbtInd><BookgDt><Dt>2026-10-03</Dt></BookgDt><ValDt><Dt>2026-10-03</Dt></ValDt><NtryRef>RCPT-1001</NtryRef></Ntry>
+    </Stmt>
+  </BkToCstmrStmt>
+</Document>

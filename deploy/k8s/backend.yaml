@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: treasury-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels: {app: treasury-backend}
+  template:
+    metadata:
+      labels: {app: treasury-backend}
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        fsGroup: 10001
+      containers:
+        - name: api
+          image: global-treasury-ai/backend:production-phase2-4
+          env:
+            - {name: ENVIRONMENT, value: production}
+          envFrom:
+            - secretRef: {name: treasury-production-config}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+            seccompProfile: {type: RuntimeDefault}
+          volumeMounts:
+            - {name: temporary, mountPath: /tmp}
+          ports: [{containerPort: 8000}]
+          readinessProbe:
+            httpGet: {path: /health/ready, port: 8000}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: {path: /health, port: 8000}
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          resources:
+            requests: {cpu: "250m", memory: "512Mi"}
+            limits: {cpu: "2", memory: "2Gi"}
+      volumes:
+        - name: temporary
+          emptyDir: {sizeLimit: 128Mi}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: treasury-backend
+spec:
+  selector: {app: treasury-backend}
+  ports: [{port: 8000, targetPort: 8000}]

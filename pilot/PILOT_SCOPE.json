@@ -1,0 +1,61 @@
+{
+  "status": "UNASSIGNED",
+  "legal_entities": [],
+  "countries": [],
+  "banks": [],
+  "bank_accounts": [],
+  "erp_system": null,
+  "erp_company_codes": [],
+  "currencies": [],
+  "market_data_provider": null,
+  "deployment_environment": null,
+  "enterprise_owner": null,
+  "incumbent_system": null,
+  "evidence_repository": null,
+  "pilot_start_date": null,
+  "capacity_targets": {
+    "representative_volume": null,
+    "p95_latency_ms": null,
+    "error_rate_limit": null
+  },
+  "execution_enabled": false,
+  "source_authority": "SHADOW",
+  "real_credentials_available": false,
+  "assumed_rehearsal_scope": {
+    "kind": "SYNTHETIC_PLANNING_ONLY",
+    "business_example": "Shell-inspired oil and petroleum products business; no affiliation or actual company data",
+    "entities": [
+      "DEMO_UK_ENERGY",
+      "DEMO_SINGAPORE_TRADING"
+    ],
+    "assumed_countries": [
+      "United Kingdom",
+      "Singapore"
+    ],
+    "reporting_currency": "USD",
+    "transaction_currencies": [
+      "USD",
+      "GBP",
+      "SGD"
+    ],
+    "products": [
+      "crude oil",
+      "diesel",
+      "gasoline",
+      "jet fuel"
+    ],
+    "banks": [
+      "SIMULATED_BANK_UK",
+      "SIMULATED_BANK_SG"
+    ],
+    "bank_accounts": [
+      "DEMO_USD_001",
+      "DEMO_GBP_001",
+      "DEMO_SGD_001"
+    ],
+    "erp_adapter_boundary": "SAP_S4HANA",
+    "environment": "LOCAL_SYNTHETIC_REHEARSAL",
+    "approvers": "UNASSIGNED",
+    "real_provider_selected": false
+  }
+}

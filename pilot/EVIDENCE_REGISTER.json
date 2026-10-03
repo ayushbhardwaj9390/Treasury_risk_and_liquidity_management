@@ -1,0 +1,233 @@
+{
+  "status": "BLOCKED_EXTERNAL_EVIDENCE",
+  "purpose": "Planning register only; does not submit evidence or change release state",
+  "gates": [
+    {
+      "gate": "BANK_UAT",
+      "required_role": "INTEGRATION_OWNER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "ERP_UAT",
+      "required_role": "INTEGRATION_OWNER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "MARKET_LICENSE",
+      "required_role": "INTEGRATION_OWNER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "MODEL_VALIDATION",
+      "required_role": "RISK_MANAGER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "SECURITY_REVIEW",
+      "required_role": "SECURITY_OFFICER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "PENETRATION_TEST",
+      "required_role": "SECURITY_OFFICER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "IDENTITY_KMS_SIEM",
+      "required_role": "SECURITY_OFFICER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "RESTORE_FAILOVER",
+      "required_role": "OPERATIONS_MANAGER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "LOAD_TEST",
+      "required_role": "OPERATIONS_MANAGER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "MONITORING",
+      "required_role": "OPERATIONS_MANAGER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "ROLLBACK_REHEARSAL",
+      "required_role": "OPERATIONS_MANAGER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "TREASURY_UAT",
+      "required_role": "GROUP_TREASURER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "PAYMENTS_UAT",
+      "required_role": "PAYMENT_OPERATOR",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "ACCOUNTING_UAT",
+      "required_role": "ACCOUNTING_REVIEWER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "TAX_VALIDATION",
+      "required_role": "TAX_REVIEWER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "LEGAL_VALIDATION",
+      "required_role": "LEGAL_REVIEWER",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    },
+    {
+      "gate": "AUDIT_REVIEW",
+      "required_role": "AUDITOR",
+      "assigned_person": null,
+      "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+      "document_reference": null,
+      "document_sha256": null,
+      "review_date": null,
+      "expires_at": null
+    }
+  ],
+  "signoffs": [
+    {
+      "role": "ACCOUNTING_REVIEWER",
+      "assigned_person": null,
+      "decision": null
+    },
+    {
+      "role": "AUDITOR",
+      "assigned_person": null,
+      "decision": null
+    },
+    {
+      "role": "CFO",
+      "assigned_person": null,
+      "decision": null
+    },
+    {
+      "role": "GROUP_TREASURER",
+      "assigned_person": null,
+      "decision": null
+    },
+    {
+      "role": "INTEGRATION_OWNER",
+      "assigned_person": null,
+      "decision": null
+    },
+    {
+      "role": "LEGAL_REVIEWER",
+      "assigned_person": null,
+      "decision": null
+    },
+    {
+      "role": "OPERATIONS_MANAGER",
+      "assigned_person": null,
+      "decision": null
+    },
+    {
+      "role": "PAYMENT_OPERATOR",
+      "assigned_person": null,
+      "decision": null
+    },
+    {
+      "role": "RISK_MANAGER",
+      "assigned_person": null,
+      "decision": null
+    },
+    {
+      "role": "SECURITY_OFFICER",
+      "assigned_person": null,
+      "decision": null
+    },
+    {
+      "role": "TAX_REVIEWER",
+      "assigned_person": null,
+      "decision": null
+    }
+  ]
+}

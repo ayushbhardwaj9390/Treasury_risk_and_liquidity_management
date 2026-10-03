@@ -1,0 +1,22 @@
+groups:
+  - name: treasury-production
+    rules:
+      - alert: TreasuryUnavailable
+        expr: up{job="treasury"} == 0
+        for: 1m
+        labels: {severity: critical}
+        annotations: {summary: "Treasury service unavailable; activate manual continuity procedure"}
+      - alert: TreasuryErrors
+        expr: sum(rate(treasury_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(treasury_http_requests_total[5m])), 0.001) > 0.01
+        for: 5m
+        labels: {severity: critical}
+        annotations: {summary: "Treasury HTTP error rate exceeds 1 percent"}
+      - alert: TreasuryExecutionRejected
+        expr: increase(treasury_execution_messages_total{status="REJECTED"}[5m]) > 0
+        labels: {severity: critical}
+        annotations: {summary: "Execution rejection requires operator investigation and reconciliation"}
+      - alert: TreasuryReadinessBlocked
+        expr: treasury_production_release_ready == 0
+        for: 1m
+        labels: {severity: critical}
+        annotations: {summary: "Production evidence expired, changed or incomplete; execution is blocked"}

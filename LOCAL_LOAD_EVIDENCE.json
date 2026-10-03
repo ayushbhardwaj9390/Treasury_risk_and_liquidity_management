@@ -1,0 +1,10 @@
+{
+  "kind": "SYNTHETIC",
+  "scope": "LOCAL_TESTCLIENT_10_THREADS",
+  "requests": 100,
+  "failures": 0,
+  "mean_ms": 2343.594,
+  "p95_ms": 10370.319,
+  "elapsed_seconds": 25.478,
+  "production_capacity_certified": false
+}

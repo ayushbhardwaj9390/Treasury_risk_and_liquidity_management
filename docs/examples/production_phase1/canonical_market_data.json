@@ -1,0 +1,14 @@
+{
+  "connector_code": "MARKET_DATA_LIVE",
+  "schema_version": "1.0",
+  "quotes": [
+    {
+      "instrument_type": "FX_SPOT",
+      "base_currency": "USD",
+      "quote_currency": "INR",
+      "value": 90.50,
+      "as_of": "2026-10-03T10:00:00Z",
+      "source": "LICENSED_PROVIDER_PLACEHOLDER"
+    }
+  ]
+}

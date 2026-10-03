@@ -1,0 +1,12 @@
+{
+  "kind": "SYNTHETIC",
+  "certification": "UNVALIDATED",
+  "scope": "LOCAL_SQLITE_ONLY",
+  "status": "PASS",
+  "backup_sha256": "1dd9d17fe2942cc2373075701d181f9569437590b47c8050c827b927adf1878f",
+  "tables": 70,
+  "integrity": "ok",
+  "restored_bytes_equal": true,
+  "local_elapsed_seconds": 0.065231,
+  "production_rto_rpo": "NOT_MEASURED"
+}

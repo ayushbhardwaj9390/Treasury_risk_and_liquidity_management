@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: treasury
+      POSTGRES_USER: treasury
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets: [db_password]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U treasury -d treasury"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+  backend:
+    build: ./backend
+    environment:
+      ENVIRONMENT: production
+      AUTH_MODE: oidc_jwt
+      DATABASE_URL: postgresql+psycopg://treasury@postgres:5432/treasury
+      AI_ENABLED: "false"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports: ["8000:8000"]
+  frontend:
+    build: ./frontend
+    environment:
+      API_BASE_URL: http://backend:8000
+    depends_on: [backend]
+    ports: ["3000:3000"]
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+volumes:
+  pgdata:
