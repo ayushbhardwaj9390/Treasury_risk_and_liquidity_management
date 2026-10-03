@@ -23,5 +23,6 @@ jobs:
         with: {version: "11.19.0"}
       - run: cd frontend && pnpm install --frozen-lockfile
       - run: cd frontend && pnpm exec tsc --noEmit
+      - run: cd frontend && pnpm test
       - run: cd frontend && pnpm build
       - run: cd frontend && pnpm audit --audit-level=high

@@ -113,6 +113,9 @@ def run():
             engine.dispose()
     output = ROOT / "pilot/ENERGY_PILOT_RESULTS.json"
     output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    # Keep the frontend image self-contained; its build context excludes pilot/.
+    frontend_data = {key: report[key] for key in ("kind", "as_of", "input_sha256", "scenarios")}
+    (ROOT / "frontend/lib/energy-pilot.json").write_text(json.dumps(frontend_data, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"output": str(output), "cases": len(report["scenarios"]),
                       "execution_control": report["execution_control"]}))
 

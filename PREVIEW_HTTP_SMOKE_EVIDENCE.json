@@ -1,0 +1,35 @@
+{
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "path": "/api/treasury?key=getLiquidity",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "path": "/api/treasury?key=getForecast",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "path": "/api/treasury?key=productionGate",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "path": "/api/treasury?key=unknown",
+      "status": 400,
+      "expected": 400
+    },
+    {
+      "method": "POST",
+      "status": 405,
+      "expected": 405
+    }
+  ],
+  "kind": "LOCAL_SYNTHETIC"
+}

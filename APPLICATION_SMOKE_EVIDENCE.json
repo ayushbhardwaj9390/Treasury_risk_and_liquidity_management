@@ -1,0 +1,483 @@
+{
+  "kind": "SYNTHETIC",
+  "checks": 80,
+  "failures": [],
+  "results": [
+    {
+      "name": "getLiquidity",
+      "path": "/api/v1/liquidity/global",
+      "status": 200,
+      "seconds": 0.212
+    },
+    {
+      "name": "getTreasurySummary",
+      "path": "/api/v1/agents/treasury-summary",
+      "status": 200,
+      "seconds": 15.539
+    },
+    {
+      "name": "getForecast",
+      "path": "/api/v1/liquidity/forecast?scenario=BASE&weeks=13",
+      "status": 200,
+      "seconds": 0.052
+    },
+    {
+      "name": "getStressSummary",
+      "path": "/api/v1/liquidity/stress?weeks=13",
+      "status": 200,
+      "seconds": 0.127
+    },
+    {
+      "name": "getDerivativeRisk",
+      "path": "/api/v1/risk/derivatives",
+      "status": 200,
+      "seconds": 0.006
+    },
+    {
+      "name": "getHedgeCoverage",
+      "path": "/api/v1/risk/hedging",
+      "status": 200,
+      "seconds": 0.005
+    },
+    {
+      "name": "getInterestRateRisk",
+      "path": "/api/v1/risk/interest-rates",
+      "status": 200,
+      "seconds": 0.008
+    },
+    {
+      "name": "getCounterpartyRisk",
+      "path": "/api/v1/risk/counterparties",
+      "status": 200,
+      "seconds": 0.009
+    },
+    {
+      "name": "getMarketStress",
+      "path": "/api/v1/risk/market-stress?fx_shock_pct=0.10&rate_shock_bps=100",
+      "status": 200,
+      "seconds": 0.071
+    },
+    {
+      "name": "getAgentRuntime",
+      "path": "/api/v1/agents/runtime",
+      "status": 200,
+      "seconds": 0.009
+    },
+    {
+      "name": "getCashMobility",
+      "path": "/api/v1/liquidity/mobility",
+      "status": 200,
+      "seconds": 0.05
+    },
+    {
+      "name": "getCashPools",
+      "path": "/api/v1/liquidity/cash-pools",
+      "status": 200,
+      "seconds": 0.047
+    },
+    {
+      "name": "getCrossBorderFunding",
+      "path": "/api/v1/funding/intercompany",
+      "status": 200,
+      "seconds": 0.005
+    },
+    {
+      "name": "getCollateralLiquidity",
+      "path": "/api/v1/risk/collateral",
+      "status": 200,
+      "seconds": 0.006
+    },
+    {
+      "name": "getRefinancingRisk",
+      "path": "/api/v1/risk/refinancing",
+      "status": 200,
+      "seconds": 0.04
+    },
+    {
+      "name": "getMarketDataControls",
+      "path": "/api/v1/controls/market-data",
+      "status": 200,
+      "seconds": 0.004
+    },
+    {
+      "name": "getConnectorControls",
+      "path": "/api/v1/controls/connectors",
+      "status": 200,
+      "seconds": 0.003
+    },
+    {
+      "name": "getReconciliations",
+      "path": "/api/v1/controls/reconciliations",
+      "status": 200,
+      "seconds": 0.003
+    },
+    {
+      "name": "getHedgeAccounting",
+      "path": "/api/v1/accounting/hedges",
+      "status": 200,
+      "seconds": 0.003
+    },
+    {
+      "name": "getTransactionProposals",
+      "path": "/api/v1/transactions/proposals",
+      "status": 200,
+      "seconds": 0.005
+    },
+    {
+      "name": "getScenarioTemplates",
+      "path": "/api/v1/scenarios",
+      "status": 200,
+      "seconds": 0.005
+    },
+    {
+      "name": "getReverseStress",
+      "path": "/api/v1/risk/reverse-stress",
+      "status": 200,
+      "seconds": 1.776
+    },
+    {
+      "name": "getModelValidation",
+      "path": "/api/v1/intelligence/model-validation",
+      "status": 200,
+      "seconds": 0.449
+    },
+    {
+      "name": "getModelDrift",
+      "path": "/api/v1/intelligence/model-drift",
+      "status": 200,
+      "seconds": 0.037
+    },
+    {
+      "name": "getMLCashForecast",
+      "path": "/api/v1/intelligence/cash-forecast",
+      "status": 200,
+      "seconds": 1.342
+    },
+    {
+      "name": "getIntradayLiquidity",
+      "path": "/api/v1/liquidity/intraday",
+      "status": 200,
+      "seconds": 0.331
+    },
+    {
+      "name": "getPaymentAnomalies",
+      "path": "/api/v1/risk/payment-anomalies",
+      "status": 200,
+      "seconds": 0.369
+    },
+    {
+      "name": "getIPV",
+      "path": "/api/v1/controls/ipv",
+      "status": 200,
+      "seconds": 0.006
+    },
+    {
+      "name": "getPaymentScreening",
+      "path": "/api/v1/controls/payment-screening",
+      "status": 200,
+      "seconds": 0.003
+    },
+    {
+      "name": "getInstitutionalValuation",
+      "path": "/api/v1/valuation/institutional",
+      "status": 200,
+      "seconds": 0.012
+    },
+    {
+      "name": "getLiquidityAtRisk",
+      "path": "/api/v1/risk/liquidity-at-risk?simulations=2000",
+      "status": 200,
+      "seconds": 0.04
+    },
+    {
+      "name": "getLegalNetting",
+      "path": "/api/v1/risk/legal-netting",
+      "status": 200,
+      "seconds": 0.016
+    },
+    {
+      "name": "getCollateralOptimization",
+      "path": "/api/v1/risk/collateral-optimization",
+      "status": 200,
+      "seconds": 0.015
+    },
+    {
+      "name": "getChampionChallenger",
+      "path": "/api/v1/intelligence/champion-challenger",
+      "status": 200,
+      "seconds": 1.144
+    },
+    {
+      "name": "getOperationalResilience",
+      "path": "/api/v1/ops/resilience",
+      "status": 200,
+      "seconds": 0.004
+    },
+    {
+      "name": "getLiveOperationsStatus",
+      "path": "/api/v1/operations/live-status",
+      "status": 200,
+      "seconds": 0.005
+    },
+    {
+      "name": "getLiveTreasuryAlerts",
+      "path": "/api/v1/operations/alerts",
+      "status": 200,
+      "seconds": 0.008
+    },
+    {
+      "name": "getExecutionMessages",
+      "path": "/api/v1/execution/messages",
+      "status": 200,
+      "seconds": 0.003
+    },
+    {
+      "name": "getFundingOptimization",
+      "path": "/api/v1/optimization/funding",
+      "status": 200,
+      "seconds": 0.111
+    },
+    {
+      "name": "getScenarioSearch",
+      "path": "/api/v1/optimization/scenario-search?top_n=5",
+      "status": 200,
+      "seconds": 2.157
+    },
+    {
+      "name": "getTreasuryDecisionPack",
+      "path": "/api/v1/optimization/decision-pack?objective=BALANCED",
+      "status": 200,
+      "seconds": 2.741
+    },
+    {
+      "name": "getMarketRiskDistribution",
+      "path": "/api/v1/risk/market-var?horizon_days=10&simulations=3000&seed=42",
+      "status": 200,
+      "seconds": 0.012
+    },
+    {
+      "name": "getLiquidityTransferPricing",
+      "path": "/api/v1/liquidity/transfer-pricing",
+      "status": 200,
+      "seconds": 0.035
+    },
+    {
+      "name": "getBankAccountRationalization",
+      "path": "/api/v1/operations/bank-account-rationalization",
+      "status": 200,
+      "seconds": 0.009
+    },
+    {
+      "name": "getDigitalTwin",
+      "path": "/api/v1/digital-twin",
+      "status": 200,
+      "seconds": 1.024
+    },
+    {
+      "name": "getHistoricalMarketCalibration",
+      "path": "/api/v1/risk/historical-calibration",
+      "status": 200,
+      "seconds": 0.019
+    },
+    {
+      "name": "getHistoricalMarketRisk",
+      "path": "/api/v1/risk/historical-market-var",
+      "status": 200,
+      "seconds": 0.032
+    },
+    {
+      "name": "getXVA",
+      "path": "/api/v1/risk/xva",
+      "status": 200,
+      "seconds": 0.026
+    },
+    {
+      "name": "getLiquiditySurvival",
+      "path": "/api/v1/liquidity/survival-horizon",
+      "status": 200,
+      "seconds": 0.184
+    },
+    {
+      "name": "getFundingConcentration",
+      "path": "/api/v1/funding/concentration",
+      "status": 200,
+      "seconds": 0.022
+    },
+    {
+      "name": "getRiskLimits",
+      "path": "/api/v1/risk/limits",
+      "status": 200,
+      "seconds": 0.21
+    },
+    {
+      "name": "getStructuralLiquidityGap",
+      "path": "/api/v1/liquidity/structural-gap",
+      "status": 200,
+      "seconds": 0.081
+    },
+    {
+      "name": "getRateGapDV01",
+      "path": "/api/v1/risk/rate-gap-dv01",
+      "status": 200,
+      "seconds": 0.013
+    },
+    {
+      "name": "getFundingTenorOptimization",
+      "path": "/api/v1/optimization/funding-tenor",
+      "status": 200,
+      "seconds": 0.16
+    },
+    {
+      "name": "getContingencyFundingPlan",
+      "path": "/api/v1/liquidity/contingency-funding-plan",
+      "status": 200,
+      "seconds": 0.262
+    },
+    {
+      "name": "getTreasuryEarlyWarning",
+      "path": "/api/v1/risk/early-warning",
+      "status": 200,
+      "seconds": 0.665
+    },
+    {
+      "name": "getBalanceSheetTwin",
+      "path": "/api/v1/digital-twin/balance-sheet",
+      "status": 200,
+      "seconds": 1.299
+    },
+    {
+      "name": "getLiquidityConcentration",
+      "path": "/api/v1/liquidity/concentration",
+      "status": 200,
+      "seconds": 0.254
+    },
+    {
+      "name": "getProbabilisticLiquidity",
+      "path": "/api/v1/liquidity/probabilistic-path?simulations=1000&seed=42",
+      "status": 200,
+      "seconds": 0.062
+    },
+    {
+      "name": "getForecastDrivers",
+      "path": "/api/v1/liquidity/forecast-drivers?horizon_weeks=13&top_n=8",
+      "status": 200,
+      "seconds": 0.007
+    },
+    {
+      "name": "getLiquidityActionPlaybook",
+      "path": "/api/v1/liquidity/action-playbook",
+      "status": 200,
+      "seconds": 0.464
+    },
+    {
+      "name": "getForecastAccuracy",
+      "path": "/api/v1/liquidity/forecast-accuracy?lookback_days=180",
+      "status": 200,
+      "seconds": 0.122
+    },
+    {
+      "name": "getForecastBias",
+      "path": "/api/v1/liquidity/forecast-bias?lookback_days=180",
+      "status": 200,
+      "seconds": 0.105
+    },
+    {
+      "name": "getWorkingCapitalCycle",
+      "path": "/api/v1/working-capital/cycle",
+      "status": 200,
+      "seconds": 0.029
+    },
+    {
+      "name": "getReceivablesAging",
+      "path": "/api/v1/working-capital/receivables-aging",
+      "status": 200,
+      "seconds": 0.008
+    },
+    {
+      "name": "getCrossBorderGraph",
+      "path": "/api/v1/global-treasury/cross-border-constraints",
+      "status": 200,
+      "seconds": 0.008
+    },
+    {
+      "name": "getLegalEntityLiquidityOptimization",
+      "path": "/api/v1/optimization/legal-entity-liquidity",
+      "status": 200,
+      "seconds": 0.178
+    },
+    {
+      "name": "getEnterpriseConnectorReadiness",
+      "path": "/api/v1/integrations/readiness",
+      "status": 200,
+      "seconds": 0.017
+    },
+    {
+      "name": "getEnterpriseSecurityPosture",
+      "path": "/api/v1/security/enterprise-posture",
+      "status": 200,
+      "seconds": 0.012
+    },
+    {
+      "name": "getProductionReadiness",
+      "path": "/api/v1/production/readiness",
+      "status": 200,
+      "seconds": 0.125
+    },
+    {
+      "name": "getTreasurerWorkspace",
+      "path": "/api/v1/workspaces/GROUP_TREASURER",
+      "status": 200,
+      "seconds": 0.01
+    },
+    {
+      "name": "getTreasuryRiskRadar",
+      "path": "/api/v1/intelligence/treasury-risk-radar?horizon_days=90",
+      "status": 200,
+      "seconds": 1.714
+    },
+    {
+      "name": "getOptimalLiquidityBuffer",
+      "path": "/api/v1/strategy/optimal-liquidity-buffer",
+      "status": 200,
+      "seconds": 0.695
+    },
+    {
+      "name": "getProductionPhase1Status",
+      "path": "/api/v1/integrations/phase1/status",
+      "status": 200,
+      "seconds": 0.061
+    },
+    {
+      "name": "getProductionPhase1ParallelReadiness",
+      "path": "/api/v1/integrations/phase1/parallel-readiness",
+      "status": 200,
+      "seconds": 0.08
+    },
+    {
+      "name": "getSourceAuthorities",
+      "path": "/api/v1/integrations/phase1/authority",
+      "status": 200,
+      "seconds": 0.008
+    },
+    {
+      "path": "/health",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "path": "/health/ready",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "path": "/health/production",
+      "status": 503,
+      "expected": 503
+    },
+    {
+      "path": "/api/v1/production/releases/1",
+      "status": 401,
+      "expected": 401
+    }
+  ]
+}

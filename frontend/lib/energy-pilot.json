@@ -1,26 +1,7 @@
 {
   "kind": "SYNTHETIC",
-  "production_status": "BLOCKED_EXTERNAL_EVIDENCE",
-  "input_sha256": "bc1cfcff24c51da5d42130d1fcfaf1f73276d281b33ed464c4bcc418a56b9b44",
   "as_of": "2026-10-03",
-  "assumptions": {
-    "fx_usd_per_unit": {
-      "USD": "1",
-      "GBP": "1.25",
-      "SGD": "0.80"
-    },
-    "minimum_cash_usd": {
-      "DEMO_UK_ENERGY": "10000000",
-      "DEMO_SINGAPORE_TRADING": "5000000"
-    },
-    "functional_currency": "USD",
-    "restricted_cash": "0",
-    "committed_outflows": "0",
-    "credit_facilities": "NONE",
-    "receipt_probability": "1",
-    "forecast_weeks": 13,
-    "aggregation": "WEEKLY; does not demonstrate intraday solvency"
-  },
+  "input_sha256": "bc1cfcff24c51da5d42130d1fcfaf1f73276d281b33ed464c4bcc418a56b9b44",
   "scenarios": [
     {
       "case": "BASE",
@@ -1212,80 +1193,5 @@
         "warnings": []
       }
     }
-  ],
-  "execution_control": "PASS: incomplete synthetic release denied execution",
-  "release_gate": {
-    "release_id": 1,
-    "state": "DRAFT",
-    "evidence_digest": "4331130691edf417c9ec6b187adfe10b2aeebf318720eb005fe6aa5f5295f2ef",
-    "status": "BLOCKED",
-    "blockers": [
-      "BANK_UAT: missing, synthetic, failed or expired external evidence",
-      "ERP_UAT: missing, synthetic, failed or expired external evidence",
-      "MARKET_LICENSE: missing, synthetic, failed or expired external evidence",
-      "MODEL_VALIDATION: missing, synthetic, failed or expired external evidence",
-      "SECURITY_REVIEW: missing, synthetic, failed or expired external evidence",
-      "PENETRATION_TEST: missing, synthetic, failed or expired external evidence",
-      "IDENTITY_KMS_SIEM: missing, synthetic, failed or expired external evidence",
-      "RESTORE_FAILOVER: missing, synthetic, failed or expired external evidence",
-      "LOAD_TEST: missing, synthetic, failed or expired external evidence",
-      "MONITORING: missing, synthetic, failed or expired external evidence",
-      "ROLLBACK_REHEARSAL: missing, synthetic, failed or expired external evidence",
-      "TREASURY_UAT: missing, synthetic, failed or expired external evidence",
-      "PAYMENTS_UAT: missing, synthetic, failed or expired external evidence",
-      "ACCOUNTING_UAT: missing, synthetic, failed or expired external evidence",
-      "TAX_VALIDATION: missing, synthetic, failed or expired external evidence",
-      "LEGAL_VALIDATION: missing, synthetic, failed or expired external evidence",
-      "AUDIT_REVIEW: missing, synthetic, failed or expired external evidence",
-      "MODEL_VALIDATION: current model inventory/version coverage incomplete",
-      "PARALLEL_RUN: no real observations",
-      "SIGNOFF: ACCOUNTING_REVIEWER",
-      "SIGNOFF: AUDITOR",
-      "SIGNOFF: CFO",
-      "SIGNOFF: GROUP_TREASURER",
-      "SIGNOFF: INTEGRATION_OWNER",
-      "SIGNOFF: LEGAL_REVIEWER",
-      "SIGNOFF: OPERATIONS_MANAGER",
-      "SIGNOFF: PAYMENT_OPERATOR",
-      "SIGNOFF: RISK_MANAGER",
-      "SIGNOFF: SECURITY_OFFICER",
-      "SIGNOFF: TAX_REVIEWER",
-      "PHASE1: real-data coverage, reconciliation or source authority incomplete"
-    ],
-    "required_gates": {
-      "BANK_UAT": "INTEGRATION_OWNER",
-      "ERP_UAT": "INTEGRATION_OWNER",
-      "MARKET_LICENSE": "INTEGRATION_OWNER",
-      "MODEL_VALIDATION": "RISK_MANAGER",
-      "SECURITY_REVIEW": "SECURITY_OFFICER",
-      "PENETRATION_TEST": "SECURITY_OFFICER",
-      "IDENTITY_KMS_SIEM": "SECURITY_OFFICER",
-      "RESTORE_FAILOVER": "OPERATIONS_MANAGER",
-      "LOAD_TEST": "OPERATIONS_MANAGER",
-      "MONITORING": "OPERATIONS_MANAGER",
-      "ROLLBACK_REHEARSAL": "OPERATIONS_MANAGER",
-      "TREASURY_UAT": "GROUP_TREASURER",
-      "PAYMENTS_UAT": "PAYMENT_OPERATOR",
-      "ACCOUNTING_UAT": "ACCOUNTING_REVIEWER",
-      "TAX_VALIDATION": "TAX_REVIEWER",
-      "LEGAL_VALIDATION": "LEGAL_REVIEWER",
-      "AUDIT_REVIEW": "AUDITOR"
-    },
-    "required_signoff_roles": [
-      "ACCOUNTING_REVIEWER",
-      "AUDITOR",
-      "CFO",
-      "GROUP_TREASURER",
-      "INTEGRATION_OWNER",
-      "LEGAL_REVIEWER",
-      "OPERATIONS_MANAGER",
-      "PAYMENT_OPERATOR",
-      "RISK_MANAGER",
-      "SECURITY_OFFICER",
-      "TAX_REVIEWER"
-    ],
-    "real_observation_count": 0,
-    "autonomous_execution": false,
-    "model_inventory": {}
-  }
+  ]
 }
