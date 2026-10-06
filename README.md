@@ -3,6 +3,12 @@
 Production validation candidate: see [release controls and runbooks](docs/PRODUCTION_PHASES_2_4.md).
 Production remains blocked until real external evidence and separate human sign-offs pass.
 
+Company setup now supports industry-neutral profiles, pending legal-entity registrations
+and staff-role visibility in a dedicated deployment per company. See
+[company onboarding and deployment limits](docs/COMPANY_ONBOARDING.md).
+The public site is a recorded demo; company saving requires a configured backend and
+company sign-in. Pending registrations never activate treasury data or clear go-live gates.
+
 Built on the completed MVP-22 treasury platform. Production Phase 1 starts the transition from controlled/synthetic inputs to governed real-bank, ERP and market-data integration.
 
 Enterprise-oriented multinational **treasury risk and liquidity risk** platform. The application separates deterministic financial calculations, risk models, policy/legal/tax constraints, GPT-6 Astra reasoning, human approvals and external execution.

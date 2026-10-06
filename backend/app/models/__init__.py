@@ -1,3 +1,4 @@
+from .company import CompanyProfile, CompanyEntityRegistration
 from .production import ProductionRelease, ProductionEvidence, ProductionSignoff, ProductionObservation, ProductionEvent
 from .treasury import (
     AuditLog,

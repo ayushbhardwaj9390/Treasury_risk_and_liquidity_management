@@ -1,5 +1,24 @@
 # Global Treasury AI — Project Status: Production Phases 2–4
 
+## Company product foundation — 6 October 2026
+
+Industry-neutral company setup now includes a persisted profile, pending legal-entity
+registrations, staff-role visibility and guided links to cash planning, connections
+and release readiness. The Group Treasurer can save setup metadata with an audit
+trail; profile versions reject conflicting saves. Pending entities remain separate
+from engine-authoritative entities. No balances, approved policies or source
+authority are changed by setup.
+
+Migration head is `0026_company_onboarding`. The frontend production build and
+51 frontend tests passed locally. Clean SQLite upgrade, schema comparison and
+downgrade/re-upgrade passed for the onboarding tables; PostgreSQL deployment
+verification remains outstanding. See `docs/COMPANY_ONBOARDING.md`.
+
+Customer deployments must have separate databases, identity configuration and
+secrets. Shared multi-company tenant isolation and automated promotion of pending
+entities are not implemented. The public demo cannot save company records. Hosted
+customer infrastructure, real feeds and external production evidence remain blocking.
+
 ## Current release — 3 October 2026
 
 The synthetic energy pilot has now executed five scenarios through the unchanged
@@ -20,7 +39,8 @@ release state. The deployment status remains blocked by external evidence.
 The code-side validation candidate adds independent model benchmarking, model/version
 coverage gates, production security hardening, release-scoped UAT and parallel-run
 evidence, role sign-offs, controlled go-live/halt/rollback, execution gating and
-production monitoring. Migration head is `0025_production_governance`.
+production monitoring. Its original migration head was `0025_production_governance`;
+the company setup addition advances it to `0026_company_onboarding`.
 
 **Production status: BLOCKED pending real external evidence and human approvals.**
 No provider, tax/legal, model, security, UAT or executive certification is claimed.

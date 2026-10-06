@@ -2,6 +2,11 @@
 
 MVP-8 is a reference enterprise architecture, not a turnkey production treasury system.
 
+For the company setup release, provision a separate deployment, database, identity
+application/audience and secrets per customer. Shared multi-company tenant isolation
+is not implemented. Follow [company onboarding](COMPANY_ONBOARDING.md), including
+migration `0026_company_onboarding` and the pending-registration review boundary.
+
 ## Required production substitutions
 
 1. Set `ENVIRONMENT=production` and use PostgreSQL or an approved enterprise database service.

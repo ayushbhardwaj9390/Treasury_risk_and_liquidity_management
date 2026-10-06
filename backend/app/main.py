@@ -10,6 +10,7 @@ from sqlalchemy import text
 
 from app.api.routes import router
 from app.api.production import router as production_router
+from app.api.company import router as company_router
 from app.core.config import settings
 from app.core.db import Base, SessionLocal, engine
 from app.core.observability import Timer, observe_request, render_prometheus
@@ -149,3 +150,4 @@ def metrics():
 
 app.include_router(router)
 app.include_router(production_router)
+app.include_router(company_router)
