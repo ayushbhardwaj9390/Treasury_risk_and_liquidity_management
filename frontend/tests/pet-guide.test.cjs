@@ -4,7 +4,7 @@ const ts=require('typescript'),fs=require('node:fs'),path=require('node:path'),v
 const guide={};
 vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../lib/pet-guide.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports:guide});
 test('tour destinations and context guidance cover the actual workspaces',()=>{
-  const expected=['overview','forecast','energy','planning','risk','funding','integrations','governance','agents','analytics'];
+  const expected=['start','overview','forecast','energy','planning','risk','funding','integrations','governance','agents','analytics'];
   assert.deepEqual(Object.keys(guide.guides).sort(),expected.sort());
   for(const step of guide.tour) assert.ok(guide.guides[step.view]);
 });
