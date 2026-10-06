@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import catalog from "../lib/endpoints.json";
 import ReleaseWorkspace, { CompanyAccess } from "./ReleaseWorkspace";
 import PlanningWorkspace from "./PlanningWorkspace";
+import TreasuryPet from "./TreasuryPet";
 
 type Data = Record<string, unknown>;
 type Result = { data?: unknown; error?: string };
@@ -126,5 +127,6 @@ export default function Dashboard({ pilot, recordedDemo }: { pilot: Pilot; recor
       {["risk", "funding", "integrations", "governance", "agents"].includes(view) && <>{view === "governance" && <div className="readiness-banner"><Badge tone="danger">Live execution blocked</Badge><h2>Evidence first. Controlled go-live.</h2><p>Service availability is separate from release approval. Real certifications, independent validation, security, recovery, UAT and human sign-offs remain mandatory.</p></div>}{view === "agents" && <div className="agent-grid">{["Liquidity & Funding", "Market & Derivatives Risk", "Global Treasury & Tax", "Risk, Controls & Model Governance", "Treasury Orchestrator & Decision"].map((name, i) => <article className="agent-card" key={name}><span>0{i + 1}</span><h3>{name}</h3><Badge>Decision support</Badge></article>)}</div>}{keys.map(panel)}</>}
       <footer className="workspace-footer"><span>Deterministic calculations · Human approval boundaries · {recordedDemo ? "Synthetic reference data" : "Governed backend sources"}</span><span aria-live="polite">{loading ? "Loading selected workspace…" : refreshed ? `${recordedDemo ? "Snapshot loaded" : "Last refresh"} ${refreshed}` : ""}</span></footer>
     </main></div>
+    <TreasuryPet view={view} navigate={setView} />
   </div>;
 }
