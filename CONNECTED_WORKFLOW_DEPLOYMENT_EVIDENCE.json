@@ -1,0 +1,339 @@
+{
+  "commit": "2c8fb5e",
+  "mode": "SYNTHETIC_RECORDED_DEMO",
+  "checks": [
+    {
+      "key": "getLiquidity",
+      "status": 200
+    },
+    {
+      "key": "getTreasurySummary",
+      "status": 200
+    },
+    {
+      "key": "getForecast",
+      "status": 200
+    },
+    {
+      "key": "getStressSummary",
+      "status": 200
+    },
+    {
+      "key": "getDerivativeRisk",
+      "status": 200
+    },
+    {
+      "key": "getHedgeCoverage",
+      "status": 200
+    },
+    {
+      "key": "getInterestRateRisk",
+      "status": 200
+    },
+    {
+      "key": "getCounterpartyRisk",
+      "status": 200
+    },
+    {
+      "key": "getMarketStress",
+      "status": 200
+    },
+    {
+      "key": "getAgentRuntime",
+      "status": 200
+    },
+    {
+      "key": "getCashMobility",
+      "status": 200
+    },
+    {
+      "key": "getCashPools",
+      "status": 200
+    },
+    {
+      "key": "getCrossBorderFunding",
+      "status": 200
+    },
+    {
+      "key": "getCollateralLiquidity",
+      "status": 200
+    },
+    {
+      "key": "getRefinancingRisk",
+      "status": 200
+    },
+    {
+      "key": "getMarketDataControls",
+      "status": 200
+    },
+    {
+      "key": "getConnectorControls",
+      "status": 200
+    },
+    {
+      "key": "getReconciliations",
+      "status": 200
+    },
+    {
+      "key": "getHedgeAccounting",
+      "status": 200
+    },
+    {
+      "key": "getTransactionProposals",
+      "status": 200
+    },
+    {
+      "key": "getScenarioTemplates",
+      "status": 200
+    },
+    {
+      "key": "getReverseStress",
+      "status": 200
+    },
+    {
+      "key": "getModelValidation",
+      "status": 200
+    },
+    {
+      "key": "getModelDrift",
+      "status": 200
+    },
+    {
+      "key": "getMLCashForecast",
+      "status": 200
+    },
+    {
+      "key": "getIntradayLiquidity",
+      "status": 200
+    },
+    {
+      "key": "getPaymentAnomalies",
+      "status": 200
+    },
+    {
+      "key": "getIPV",
+      "status": 200
+    },
+    {
+      "key": "getPaymentScreening",
+      "status": 200
+    },
+    {
+      "key": "getInstitutionalValuation",
+      "status": 200
+    },
+    {
+      "key": "getLiquidityAtRisk",
+      "status": 200
+    },
+    {
+      "key": "getLegalNetting",
+      "status": 200
+    },
+    {
+      "key": "getCollateralOptimization",
+      "status": 200
+    },
+    {
+      "key": "getChampionChallenger",
+      "status": 200
+    },
+    {
+      "key": "getOperationalResilience",
+      "status": 200
+    },
+    {
+      "key": "getLiveOperationsStatus",
+      "status": 200
+    },
+    {
+      "key": "getLiveTreasuryAlerts",
+      "status": 200
+    },
+    {
+      "key": "getExecutionMessages",
+      "status": 200
+    },
+    {
+      "key": "getFundingOptimization",
+      "status": 200
+    },
+    {
+      "key": "getScenarioSearch",
+      "status": 200
+    },
+    {
+      "key": "getTreasuryDecisionPack",
+      "status": 200
+    },
+    {
+      "key": "getMarketRiskDistribution",
+      "status": 200
+    },
+    {
+      "key": "getLiquidityTransferPricing",
+      "status": 200
+    },
+    {
+      "key": "getBankAccountRationalization",
+      "status": 200
+    },
+    {
+      "key": "getDigitalTwin",
+      "status": 200
+    },
+    {
+      "key": "getHistoricalMarketCalibration",
+      "status": 200
+    },
+    {
+      "key": "getHistoricalMarketRisk",
+      "status": 200
+    },
+    {
+      "key": "getXVA",
+      "status": 200
+    },
+    {
+      "key": "getLiquiditySurvival",
+      "status": 200
+    },
+    {
+      "key": "getFundingConcentration",
+      "status": 200
+    },
+    {
+      "key": "getRiskLimits",
+      "status": 200
+    },
+    {
+      "key": "getStructuralLiquidityGap",
+      "status": 200
+    },
+    {
+      "key": "getRateGapDV01",
+      "status": 200
+    },
+    {
+      "key": "getFundingTenorOptimization",
+      "status": 200
+    },
+    {
+      "key": "getContingencyFundingPlan",
+      "status": 200
+    },
+    {
+      "key": "getTreasuryEarlyWarning",
+      "status": 200
+    },
+    {
+      "key": "getBalanceSheetTwin",
+      "status": 200
+    },
+    {
+      "key": "getLiquidityConcentration",
+      "status": 200
+    },
+    {
+      "key": "getProbabilisticLiquidity",
+      "status": 200
+    },
+    {
+      "key": "getForecastDrivers",
+      "status": 200
+    },
+    {
+      "key": "getLiquidityActionPlaybook",
+      "status": 200
+    },
+    {
+      "key": "getForecastAccuracy",
+      "status": 200
+    },
+    {
+      "key": "getForecastBias",
+      "status": 200
+    },
+    {
+      "key": "getWorkingCapitalCycle",
+      "status": 200
+    },
+    {
+      "key": "getReceivablesAging",
+      "status": 200
+    },
+    {
+      "key": "getCrossBorderGraph",
+      "status": 200
+    },
+    {
+      "key": "getLegalEntityLiquidityOptimization",
+      "status": 200
+    },
+    {
+      "key": "getEnterpriseConnectorReadiness",
+      "status": 200
+    },
+    {
+      "key": "getEnterpriseSecurityPosture",
+      "status": 200
+    },
+    {
+      "key": "getProductionReadiness",
+      "status": 200
+    },
+    {
+      "key": "getTreasurerWorkspace",
+      "status": 200
+    },
+    {
+      "key": "getTreasuryRiskRadar",
+      "status": 200
+    },
+    {
+      "key": "getOptimalLiquidityBuffer",
+      "status": 200
+    },
+    {
+      "key": "getProductionPhase1Status",
+      "status": 200
+    },
+    {
+      "key": "getProductionPhase1ParallelReadiness",
+      "status": 200
+    },
+    {
+      "key": "getSourceAuthorities",
+      "status": 200
+    },
+    {
+      "key": "productionGate",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/session",
+      "method": "GET",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "GET",
+      "status": 503,
+      "expected": 503
+    },
+    {
+      "path": "/api/workflow?action=status&release=1",
+      "method": "GET",
+      "status": 403,
+      "expected": 403
+    },
+    {
+      "path": "/api/workflow?action=create",
+      "method": "POST",
+      "status": 403,
+      "expected": 403
+    }
+  ],
+  "passed": 81
+}
