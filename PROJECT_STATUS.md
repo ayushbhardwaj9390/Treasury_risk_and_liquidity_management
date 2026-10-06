@@ -42,7 +42,7 @@ See `docs/CONNECTED_WORKFLOWS.md` for configuration and outstanding verification
 
 ## Private planning addition — 6 October 2026
 
-The application now includes an **Upload & what if** workspace: CSV/TSV column mapping, whole-file validation, a preview/apply boundary, explicit cash/buffer/FX assumptions, fresh deterministic scenario comparisons and CSV exports. Files stay in browser memory. Real balances, governed forecasts, evidence and payments remain unchanged. Seven synthetic cases compare the local calculator with the unchanged Python forecast engine. See `docs/PLANNING_SANDBOX.md` for usage, test evidence and limits. This feature does not clear any external production-readiness gate.
+The application now includes an **Upload & what if** workspace: CSV/TSV column mapping, whole-file validation, a preview/apply boundary, explicit cash/buffer/FX assumptions, fresh deterministic scenario comparisons and CSV exports. Files stay in browser memory. Real balances, governed forecasts, evidence and payments remain unchanged. Seven synthetic cases compare the local calculator with the unchanged Python forecast engine. Commit `982e761` is deployed publicly; its complete GitHub CI passed. Live valid-upload, simulation, stale-export blocking and downloaded CSV checks passed. Phone/tablet testing remains unverified because the browser viewport override did not apply. See `docs/PLANNING_SANDBOX.md` for usage, test evidence and limits. This feature does not clear any external production-readiness gate.
 
 ## Production Phase 1 progress
 
