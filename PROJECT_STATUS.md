@@ -181,3 +181,5 @@ The reference environment deliberately returns **NO_GO**. This is correct behavi
 ## Mint application guide — 6 October 2026
 
 Mint is an animated application mascot with contextual guidance for all ten workspaces, a six-step tour that opens the relevant screens, and bounded help answers for upload, simulation, privacy, cash buffers and go-live. It runs in browser memory, uses no external AI calls, and is explicitly labelled built-in help with no live AI connection. It does not read uploaded cash-flow contents, execute calculations or change evidence, approvals or payments. Keyboard close/focus handling and reduced-motion styles are included. This is a guide inside the treasury application, not a ChatGPT Work pet or an additional reasoning agent.
+
+Verification: 39 frontend tests, TypeScript checks and the production build passed. Live checks completed all six tour steps, contextual help, an upload question and workspace navigation. No backend model, database schema, source authority or human-approval change was required.
