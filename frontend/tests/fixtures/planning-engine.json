@@ -1,0 +1,1188 @@
+{
+  "source": "unchanged Python treasury forecast engine; synthetic isolated database",
+  "cases": [
+    {
+      "case": "BASE",
+      "flows": [
+        {
+          "id": "DEMO_CRUDE_PURCHASE",
+          "entity": "GROUP",
+          "date": "2026-10-07",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "18000000",
+          "category": "CRUDE_PURCHASE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_DIESEL_SALE",
+          "entity": "GROUP",
+          "date": "2026-10-10",
+          "direction": "INFLOW",
+          "currency": "USD",
+          "amount": "22000000",
+          "category": "PRODUCT_SALE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_FREIGHT",
+          "entity": "GROUP",
+          "date": "2026-10-08",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "1500000",
+          "category": "FREIGHT",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_UK_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "GBP",
+          "amount": "1200000",
+          "category": "OPERATING",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_SG_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "SGD",
+          "amount": "2000000",
+          "category": "OPERATING",
+          "probability": "1"
+        }
+      ],
+      "assumptions": {
+        "start": "2026-10-03",
+        "weeks": 13,
+        "opening": "34800000",
+        "buffer": "15000000",
+        "rates": {
+          "GBP": "1.25",
+          "SGD": "0.80"
+        },
+        "delay": 0,
+        "receipts": 0,
+        "costs": 0,
+        "oil": 0,
+        "fx": 0
+      },
+      "expected": {
+        "ending": "34200000.00",
+        "headroom": "19200000.00",
+        "maximumShortfall": "0.00",
+        "firstBreach": null,
+        "points": [
+          {
+            "week": 1,
+            "closing": "15300000.00",
+            "inflows": "0.00",
+            "outflows": "19500000.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 2,
+            "closing": "34200000.00",
+            "inflows": "22000000.00",
+            "outflows": "3100000.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 3,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 4,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 5,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 6,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 7,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 8,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 9,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 10,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 11,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 12,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 13,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "case": "DELAY",
+      "flows": [
+        {
+          "id": "DEMO_CRUDE_PURCHASE",
+          "entity": "GROUP",
+          "date": "2026-10-07",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "18000000",
+          "category": "CRUDE_PURCHASE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_DIESEL_SALE",
+          "entity": "GROUP",
+          "date": "2026-10-10",
+          "direction": "INFLOW",
+          "currency": "USD",
+          "amount": "22000000",
+          "category": "PRODUCT_SALE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_FREIGHT",
+          "entity": "GROUP",
+          "date": "2026-10-08",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "1500000",
+          "category": "FREIGHT",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_UK_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "GBP",
+          "amount": "1200000",
+          "category": "OPERATING",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_SG_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "SGD",
+          "amount": "2000000",
+          "category": "OPERATING",
+          "probability": "1"
+        }
+      ],
+      "assumptions": {
+        "start": "2026-10-03",
+        "weeks": 13,
+        "opening": "34800000",
+        "buffer": "15000000",
+        "rates": {
+          "GBP": "1.25",
+          "SGD": "0.80"
+        },
+        "delay": 10,
+        "receipts": 0,
+        "costs": 0,
+        "oil": 0,
+        "fx": 0
+      },
+      "expected": {
+        "ending": "34200000.00",
+        "headroom": "19200000.00",
+        "maximumShortfall": "2800000.00",
+        "firstBreach": 2,
+        "points": [
+          {
+            "week": 1,
+            "closing": "15300000.00",
+            "inflows": "0.00",
+            "outflows": "19500000.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 2,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "3100000.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 3,
+            "closing": "34200000.00",
+            "inflows": "22000000.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 4,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 5,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 6,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 7,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 8,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 9,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 10,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 11,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 12,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 13,
+            "closing": "34200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "case": "OIL",
+      "flows": [
+        {
+          "id": "DEMO_CRUDE_PURCHASE",
+          "entity": "GROUP",
+          "date": "2026-10-07",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "18000000",
+          "category": "CRUDE_PURCHASE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_DIESEL_SALE",
+          "entity": "GROUP",
+          "date": "2026-10-10",
+          "direction": "INFLOW",
+          "currency": "USD",
+          "amount": "22000000",
+          "category": "PRODUCT_SALE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_FREIGHT",
+          "entity": "GROUP",
+          "date": "2026-10-08",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "1500000",
+          "category": "FREIGHT",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_UK_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "GBP",
+          "amount": "1200000",
+          "category": "OPERATING",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_SG_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "SGD",
+          "amount": "2000000",
+          "category": "OPERATING",
+          "probability": "1"
+        }
+      ],
+      "assumptions": {
+        "start": "2026-10-03",
+        "weeks": 13,
+        "opening": "34800000",
+        "buffer": "15000000",
+        "rates": {
+          "GBP": "1.25",
+          "SGD": "0.80"
+        },
+        "delay": 0,
+        "receipts": 0,
+        "costs": 0,
+        "oil": 20,
+        "fx": 0
+      },
+      "expected": {
+        "ending": "35000000.00",
+        "headroom": "20000000.00",
+        "maximumShortfall": "3300000.00",
+        "firstBreach": 1,
+        "points": [
+          {
+            "week": 1,
+            "closing": "11700000.00",
+            "inflows": "0.00",
+            "outflows": "23100000.00",
+            "shortfall": "3300000.00"
+          },
+          {
+            "week": 2,
+            "closing": "35000000.00",
+            "inflows": "26400000.00",
+            "outflows": "3100000.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 3,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 4,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 5,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 6,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 7,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 8,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 9,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 10,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 11,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 12,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 13,
+            "closing": "35000000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "case": "FX",
+      "flows": [
+        {
+          "id": "DEMO_CRUDE_PURCHASE",
+          "entity": "GROUP",
+          "date": "2026-10-07",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "18000000",
+          "category": "CRUDE_PURCHASE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_DIESEL_SALE",
+          "entity": "GROUP",
+          "date": "2026-10-10",
+          "direction": "INFLOW",
+          "currency": "USD",
+          "amount": "22000000",
+          "category": "PRODUCT_SALE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_FREIGHT",
+          "entity": "GROUP",
+          "date": "2026-10-08",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "1500000",
+          "category": "FREIGHT",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_UK_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "GBP",
+          "amount": "1200000",
+          "category": "OPERATING",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_SG_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "SGD",
+          "amount": "2000000",
+          "category": "OPERATING",
+          "probability": "1"
+        }
+      ],
+      "assumptions": {
+        "start": "2026-10-03",
+        "weeks": 13,
+        "opening": "34800000",
+        "buffer": "15000000",
+        "rates": {
+          "GBP": "1.25",
+          "SGD": "0.80"
+        },
+        "delay": 0,
+        "receipts": 0,
+        "costs": 0,
+        "oil": 0,
+        "fx": 10
+      },
+      "expected": {
+        "ending": "33890000.00",
+        "headroom": "18890000.00",
+        "maximumShortfall": "0.00",
+        "firstBreach": null,
+        "points": [
+          {
+            "week": 1,
+            "closing": "15300000.00",
+            "inflows": "0.00",
+            "outflows": "19500000.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 2,
+            "closing": "33890000.00",
+            "inflows": "22000000.00",
+            "outflows": "3410000.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 3,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 4,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 5,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 6,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 7,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 8,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 9,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 10,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 11,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 12,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 13,
+            "closing": "33890000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "case": "COMBINED",
+      "flows": [
+        {
+          "id": "DEMO_CRUDE_PURCHASE",
+          "entity": "GROUP",
+          "date": "2026-10-07",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "18000000",
+          "category": "CRUDE_PURCHASE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_DIESEL_SALE",
+          "entity": "GROUP",
+          "date": "2026-10-10",
+          "direction": "INFLOW",
+          "currency": "USD",
+          "amount": "22000000",
+          "category": "PRODUCT_SALE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_FREIGHT",
+          "entity": "GROUP",
+          "date": "2026-10-08",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "1500000",
+          "category": "FREIGHT",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_UK_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "GBP",
+          "amount": "1200000",
+          "category": "OPERATING",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_SG_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "SGD",
+          "amount": "2000000",
+          "category": "OPERATING",
+          "probability": "1"
+        }
+      ],
+      "assumptions": {
+        "start": "2026-10-03",
+        "weeks": 13,
+        "opening": "34800000",
+        "buffer": "15000000",
+        "rates": {
+          "GBP": "1.25",
+          "SGD": "0.80"
+        },
+        "delay": 10,
+        "receipts": 0,
+        "costs": 10,
+        "oil": 20,
+        "fx": 10
+      },
+      "expected": {
+        "ending": "32039000.00",
+        "headroom": "17039000.00",
+        "maximumShortfall": "9361000.00",
+        "firstBreach": 1,
+        "points": [
+          {
+            "week": 1,
+            "closing": "9390000.00",
+            "inflows": "0.00",
+            "outflows": "25410000.00",
+            "shortfall": "5610000.00"
+          },
+          {
+            "week": 2,
+            "closing": "5639000.00",
+            "inflows": "0.00",
+            "outflows": "3751000.00",
+            "shortfall": "9361000.00"
+          },
+          {
+            "week": 3,
+            "closing": "32039000.00",
+            "inflows": "26400000.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 4,
+            "closing": "32039000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 5,
+            "closing": "32039000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 6,
+            "closing": "32039000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 7,
+            "closing": "32039000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 8,
+            "closing": "32039000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 9,
+            "closing": "32039000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 10,
+            "closing": "32039000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 11,
+            "closing": "32039000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 12,
+            "closing": "32039000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 13,
+            "closing": "32039000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "case": "RECEIPTS",
+      "flows": [
+        {
+          "id": "DEMO_CRUDE_PURCHASE",
+          "entity": "GROUP",
+          "date": "2026-10-07",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "18000000",
+          "category": "CRUDE_PURCHASE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_DIESEL_SALE",
+          "entity": "GROUP",
+          "date": "2026-10-10",
+          "direction": "INFLOW",
+          "currency": "USD",
+          "amount": "22000000",
+          "category": "PRODUCT_SALE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_FREIGHT",
+          "entity": "GROUP",
+          "date": "2026-10-08",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "1500000",
+          "category": "FREIGHT",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_UK_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "GBP",
+          "amount": "1200000",
+          "category": "OPERATING",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_SG_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "SGD",
+          "amount": "2000000",
+          "category": "OPERATING",
+          "probability": "1"
+        }
+      ],
+      "assumptions": {
+        "start": "2026-10-03",
+        "weeks": 13,
+        "opening": "34800000",
+        "buffer": "15000000",
+        "rates": {
+          "GBP": "1.25",
+          "SGD": "0.80"
+        },
+        "delay": 0,
+        "receipts": -25,
+        "costs": 0,
+        "oil": 0,
+        "fx": 0
+      },
+      "expected": {
+        "ending": "28700000.00",
+        "headroom": "13700000.00",
+        "maximumShortfall": "0.00",
+        "firstBreach": null,
+        "points": [
+          {
+            "week": 1,
+            "closing": "15300000.00",
+            "inflows": "0.00",
+            "outflows": "19500000.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 2,
+            "closing": "28700000.00",
+            "inflows": "16500000.00",
+            "outflows": "3100000.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 3,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 4,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 5,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 6,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 7,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 8,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 9,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 10,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 11,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 12,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 13,
+            "closing": "28700000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "case": "OUTSIDE_HORIZON",
+      "flows": [
+        {
+          "id": "DEMO_CRUDE_PURCHASE",
+          "entity": "GROUP",
+          "date": "2026-10-07",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "18000000",
+          "category": "CRUDE_PURCHASE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_DIESEL_SALE",
+          "entity": "GROUP",
+          "date": "2026-10-10",
+          "direction": "INFLOW",
+          "currency": "USD",
+          "amount": "22000000",
+          "category": "PRODUCT_SALE",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_FREIGHT",
+          "entity": "GROUP",
+          "date": "2026-10-08",
+          "direction": "OUTFLOW",
+          "currency": "USD",
+          "amount": "1500000",
+          "category": "FREIGHT",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_UK_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "GBP",
+          "amount": "1200000",
+          "category": "OPERATING",
+          "probability": "1"
+        },
+        {
+          "id": "DEMO_SG_OPERATIONS",
+          "entity": "GROUP",
+          "date": "2026-10-12",
+          "direction": "OUTFLOW",
+          "currency": "SGD",
+          "amount": "2000000",
+          "category": "OPERATING",
+          "probability": "1"
+        }
+      ],
+      "assumptions": {
+        "start": "2026-10-03",
+        "weeks": 13,
+        "opening": "34800000",
+        "buffer": "15000000",
+        "rates": {
+          "GBP": "1.25",
+          "SGD": "0.80"
+        },
+        "delay": 90,
+        "receipts": 0,
+        "costs": 0,
+        "oil": 0,
+        "fx": 0
+      },
+      "expected": {
+        "ending": "12200000.00",
+        "headroom": "-2800000.00",
+        "maximumShortfall": "2800000.00",
+        "firstBreach": 2,
+        "points": [
+          {
+            "week": 1,
+            "closing": "15300000.00",
+            "inflows": "0.00",
+            "outflows": "19500000.00",
+            "shortfall": "0.00"
+          },
+          {
+            "week": 2,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "3100000.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 3,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 4,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 5,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 6,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 7,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 8,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 9,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 10,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 11,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 12,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          },
+          {
+            "week": 13,
+            "closing": "12200000.00",
+            "inflows": "0.00",
+            "outflows": "0.00",
+            "shortfall": "2800000.00"
+          }
+        ]
+      }
+    }
+  ]
+}

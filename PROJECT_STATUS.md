@@ -40,6 +40,10 @@ Deployment preparation now requires explicit PostgreSQL credentials and identity
 
 See `docs/CONNECTED_WORKFLOWS.md` for configuration and outstanding verification. No live source was promoted and no release was activated.
 
+## Private planning addition — 6 October 2026
+
+The application now includes an **Upload & what if** workspace: CSV/TSV column mapping, whole-file validation, a preview/apply boundary, explicit cash/buffer/FX assumptions, fresh deterministic scenario comparisons and CSV exports. Files stay in browser memory. Real balances, governed forecasts, evidence and payments remain unchanged. Seven synthetic cases compare the local calculator with the unchanged Python forecast engine. See `docs/PLANNING_SANDBOX.md` for usage, test evidence and limits. This feature does not clear any external production-readiness gate.
+
 ## Production Phase 1 progress
 
 The build has entered **Real Data & Integration**. The platform now has governed ingress and reconciliation plumbing for external treasury data rather than relying only on synthetic seed data.
