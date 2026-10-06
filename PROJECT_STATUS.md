@@ -14,6 +14,16 @@ Migration head is `0026_company_onboarding`. The frontend production build and
 downgrade/re-upgrade passed for the onboarding tables; PostgreSQL deployment
 verification remains outstanding. See `docs/COMPANY_ONBOARDING.md`.
 
+Commit `9fe0988` passed the complete GitHub backend and frontend CI, including all
+regressions, compile/type checks, calculator parity, migrations and dependency
+audits: https://github.com/ayushbhardwaj9390/Treasury_risk_and_liquidity_management/actions/runs/37452893761.
+Local backend pytest runs were interrupted after a Windows WMI/system-information
+failure or stall; the unmodified Linux CI suite provides the backend verification.
+The published company setup screen passed navigation and disabled-demo-write checks
+at 1280px and 390px browser widths, with no page-wide horizontal overflow observed.
+Real identity-provider login and company persistence on hosted infrastructure remain
+unverified because no hosted company backend/identity configuration was provided.
+
 Customer deployments must have separate databases, identity configuration and
 secrets. Shared multi-company tenant isolation and automated promotion of pending
 entities are not implemented. The public demo cannot save company records. Hosted
