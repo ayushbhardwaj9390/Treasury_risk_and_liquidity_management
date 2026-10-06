@@ -7,14 +7,14 @@ from pathlib import Path
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED_DIRS = {".venv", "node_modules", ".next", ".pytest_cache", "__pycache__", ".audit-cache", ".git"}
+EXCLUDED_DIRS = {".venv", "node_modules", ".next", ".pytest_cache", "__pycache__", ".audit-cache", ".git", "secrets", ".vercel"}
 
 
 def include(path):
     relative = path.relative_to(ROOT)
     return (not any(part in EXCLUDED_DIRS for part in relative.parts)
             and (not path.name.startswith(".env") or path.name == ".env.example")
-            and path.suffix not in {".db", ".pyc", ".tsbuildinfo", ".zip"}
+            and path.suffix not in {".db", ".pyc", ".tsbuildinfo", ".zip", ".pem", ".key"}
             and not path.name.endswith((".db-wal", ".db-shm", ".db-journal"))
             and not ("output" in path.name and path.suffix == ".txt")
             and path.name != "RELEASE_MANIFEST.json")

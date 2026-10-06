@@ -1,5 +1,6 @@
 import endpoints from "../../../lib/endpoints.json";
 import snapshot from "../../../lib/demo-snapshot.json";
+import { authorization as sessionAuthorization } from "../../../lib/session";
 
 export async function GET(request: Request) {
   const key = new URL(request.url).searchParams.get("key") ?? "";
@@ -18,7 +19,7 @@ export async function GET(request: Request) {
     } });
   }
   const headers = new Headers();
-  const authorization = request.headers.get("authorization");
+  const authorization = sessionAuthorization(request);
   if (authorization) headers.set("Authorization", authorization);
   try {
     const base = backendConfigured ?? "http://127.0.0.1:8000";

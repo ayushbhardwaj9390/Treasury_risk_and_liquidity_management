@@ -5,6 +5,16 @@ from fastapi import Header, HTTPException
 
 from app.core.config import settings
 
+CONNECTOR_INGESTION_PATHS = {
+    "/api/v1/integrations/phase1/bank/balances": "BANK",
+    "/api/v1/integrations/phase1/bank/transactions": "BANK",
+    "/api/v1/integrations/phase1/bank/iso20022": "BANK",
+    "/api/v1/integrations/phase1/erp/cash-flows": "ERP",
+    "/api/v1/integrations/phase1/erp/journals": "ERP",
+    "/api/v1/integrations/phase1/market/quotes": "MARKET",
+    "/api/v1/integrations/phase1/market/risk-data": "MARKET",
+}
+
 
 @lru_cache(maxsize=4)
 def _jwks_client(url: str):
@@ -73,10 +83,28 @@ def connector_identity(
     workload identity/mTLS/JWT verification is configured by the deployment platform.
     """
     if settings.environment.lower() == "production":
-        raise HTTPException(
-            status_code=503,
-            detail="Demo connector identity is disabled in production. Configure verified workload identity/mTLS/JWT.",
-        )
+        return _verified_connector_identity(authorization)
     if not x_connector_name:
         raise HTTPException(status_code=401, detail="X-Connector-Name is required in development demo mode")
     return x_connector_name
+
+
+def _verified_connector_identity(authorization: str | None) -> str:
+    issuer, audience, jwks = settings.connector_oidc_issuer, settings.workload_identity_audience, settings.connector_oidc_jwks_url
+    if not issuer or not audience or not jwks or audience == settings.oidc_audience:
+        raise HTTPException(503, "Configure a separate verified connector workload identity audience and issuer")
+    if not issuer.startswith("https://") or not jwks.startswith("https://"):
+        raise HTTPException(503, "Connector identity endpoints require HTTPS")
+    if not authorization or not authorization.startswith("Bearer "):
+        raise HTTPException(401, "Connector bearer token required")
+    try:
+        import jwt
+        token = authorization.split(" ", 1)[1]
+        key = _jwks_client(jwks).get_signing_key_from_jwt(token)
+        claims = jwt.decode(token, key.key, algorithms=["RS256", "ES256"], issuer=issuer,
+                            audience=audience, options={"require": ["exp", "iat", "sub"]})
+        if not isinstance(claims["sub"], str) or not claims["sub"] or len(claims["sub"]) > 120:
+            raise ValueError("Invalid connector subject")
+        return claims["sub"]
+    except Exception as exc:
+        raise HTTPException(401, "Invalid or unverifiable connector identity") from exc

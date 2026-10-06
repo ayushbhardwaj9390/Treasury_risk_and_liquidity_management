@@ -16,6 +16,12 @@ from app.services.enterprise_controls import _user
 router = APIRouter(prefix="/api/v1/production", tags=["Production governance"])
 
 
+@router.get("/identity")
+def identity(actor: str = Depends(treasury_identity), db: Session = Depends(get_db)):
+    user = invoke(db, _user, actor)
+    return {"username": user.username, "role": user.role, "active": user.active}
+
+
 def invoke(db, fn, *args):
     try:
         return fn(db, *args)

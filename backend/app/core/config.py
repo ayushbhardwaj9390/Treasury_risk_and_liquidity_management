@@ -22,6 +22,8 @@ class Settings(BaseSettings):
     execution_signing_key_id: str | None = None
     siem_endpoint: str | None = None
     workload_identity_audience: str | None = None
+    connector_oidc_issuer: str | None = None
+    connector_oidc_jwks_url: str | None = None
     integration_mode: str = "sandbox"  # sandbox / uat / production
     integration_timeout_seconds: float = 30.0
     sap_s4_base_url: str | None = None

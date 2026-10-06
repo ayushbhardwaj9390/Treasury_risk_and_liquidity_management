@@ -17,16 +17,43 @@ services:
     environment:
       ENVIRONMENT: production
       AUTH_MODE: oidc_jwt
-      DATABASE_URL: postgresql+psycopg://treasury@postgres:5432/treasury
+      DATABASE_URL: ${DATABASE_URL:?Set the password-bearing PostgreSQL connection URL in the deployment secret store}
+      OIDC_ISSUER: ${OIDC_ISSUER:?Company identity issuer required}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:?Treasury API audience required}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:?Signing key endpoint required}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:?Explicit backend hostnames required}
+      CORS_ORIGINS: ${APP_URL:?Frontend HTTPS origin required}
+      WORKLOAD_IDENTITY_AUDIENCE: ${WORKLOAD_IDENTITY_AUDIENCE:-}
+      CONNECTOR_OIDC_ISSUER: ${CONNECTOR_OIDC_ISSUER:-}
+      CONNECTOR_OIDC_JWKS_URL: ${CONNECTOR_OIDC_JWKS_URL:-}
       AI_ENABLED: "false"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    ports: ["8000:8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  migrate:
+    build: ./backend
+    command: ["python", "-m", "alembic", "upgrade", "head"]
+    environment:
+      DATABASE_URL: ${DATABASE_URL:?PostgreSQL connection URL required}
     depends_on:
       postgres:
         condition: service_healthy
-    ports: ["8000:8000"]
   frontend:
     build: ./frontend
     environment:
       API_BASE_URL: http://backend:8000
+      APP_URL: ${APP_URL:?Frontend HTTPS origin required}
+      OIDC_CLIENT_ID: ${OIDC_CLIENT_ID:?Company sign-in client required}
+      OIDC_AUTHORIZATION_URL: ${OIDC_AUTHORIZATION_URL:?Authorization endpoint required}
+      OIDC_TOKEN_URL: ${OIDC_TOKEN_URL:?Token endpoint required}
+      OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET:-}
+      SESSION_SECRET: ${SESSION_SECRET:?Random session signing secret required}
     depends_on: [backend]
     ports: ["3000:3000"]
 secrets:

@@ -32,6 +32,14 @@ Earlier Phase 1 history follows; its readiness percentages are historical estima
 not certification or evidence of this release's deployment readiness.
 
 
+## Connected workflow candidate — 6 October 2026
+
+The public Vercel demonstration was deployed from main and its 77 recorded analysis endpoints passed checks. This release adds company authorization-code sign-in with PKCE, secure HttpOnly cookies, verified active-account identity, and browser forms for release candidates, evidence fingerprints, parallel comparisons, sign-offs and release decisions. Demo writes remain denied. Registered connector ingestion now supports a separate verified JWT workload audience bound to source type; no real provider connection is claimed. Backend role checks and independent approval rules remain authoritative.
+
+Deployment preparation now requires explicit PostgreSQL credentials and identity configuration, runs migrations before the API container starts, and checks database readiness. No new external service or paid account has been provisioned. Hosted backend/database deployment, a real identity-provider login, real workload-issuer verification, real company feeds, paid model access, PostgreSQL restore/load drills and independent reviews remain outstanding. They are not represented as completed or certified.
+
+See `docs/CONNECTED_WORKFLOWS.md` for configuration and outstanding verification. No live source was promoted and no release was activated.
+
 ## Production Phase 1 progress
 
 The build has entered **Real Data & Integration**. The platform now has governed ingress and reconciliation plumbing for external treasury data rather than relying only on synthetic seed data.

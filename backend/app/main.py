@@ -52,12 +52,28 @@ app.add_middleware(
 async def enterprise_request_controls(request: Request, call_next):
     request_id = str(uuid.uuid4())
     if request.url.path.startswith("/api/") and settings.environment.lower() == "production":
-        from app.core.security import treasury_identity
+        from app.core.security import treasury_identity, connector_identity, CONNECTOR_INGESTION_PATHS
         from fastapi import HTTPException
         try:
-            treasury_identity(None, request.headers.get("Authorization"))
+            connector_type = CONNECTOR_INGESTION_PATHS.get(request.url.path) if request.method == "POST" else None
+            if connector_type:
+                actor = connector_identity(None, request.headers.get("Authorization"))
+                from app.models import SourceConnector
+                from sqlalchemy import select
+                with SessionLocal() as db:
+                    source = db.scalar(select(SourceConnector).where(SourceConnector.connector_name == actor,
+                        SourceConnector.connector_type == connector_type, SourceConnector.status == "ACTIVE"))
+                    if source is None:
+                        raise PermissionError("Registered active connector required")
+            else:
+                actor = treasury_identity(None, request.headers.get("Authorization"))
+                from app.services.enterprise_controls import _user
+                with SessionLocal() as db:
+                    _user(db, actor)
         except HTTPException as exc:
             return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+        except PermissionError:
+            return JSONResponse(status_code=403, content={"detail": "Active authorized treasury account or registered connector required"})
     if request.method in {"POST", "PUT", "PATCH"}:
         body = bytearray()
         async for chunk in request.stream():

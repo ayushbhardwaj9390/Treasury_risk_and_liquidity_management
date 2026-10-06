@@ -9,7 +9,7 @@ function handler(fetch, env = {}) {
   const source = fs.readFileSync(path.join(__dirname, '../app/api/treasury/route.ts'), 'utf8');
   const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, esModuleInterop: true } }).outputText;
   const exports = {};
-  const context = { exports, require: name => require(name.includes('demo-snapshot') ? '../lib/demo-snapshot.json' : '../lib/endpoints.json'), URL, Headers, Response, AbortSignal,
+  const context = { exports, require: name => name.endsWith('/session') ? { authorization: request => request.headers.get('authorization') ?? (request.headers.get('cookie')?.match(/(?:^|;\s*)__Host-treasury-session=([^;]+)/)?.[1] ? `Bearer ${request.headers.get('cookie').match(/(?:^|;\s*)__Host-treasury-session=([^;]+)/)[1]}` : undefined) } : require(name.includes('demo-snapshot') ? '../lib/demo-snapshot.json' : '../lib/endpoints.json'), URL, Headers, Response, AbortSignal,
     process: { env }, fetch };
   vm.runInNewContext(compiled, context);
   return exports.GET;
