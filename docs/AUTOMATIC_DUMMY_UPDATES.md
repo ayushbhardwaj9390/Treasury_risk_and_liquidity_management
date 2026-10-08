@@ -83,3 +83,9 @@ A deliberate local service outage preserved the previous position; retry after r
 advanced exactly once. The published MNC mode was checked at 1280px and 390px,
 with no page-wide overflow at 390px. Real hosted identity and external connections
 remain unverified and blocked. No schema changes were needed in this release.
+
+A subsequent three-agent review added independent maximum-shortfall and first-breach
+checks for 52 entity forecasts in isolated databases, using source balances and
+entity assumptions rather than expected TS totals. All comparisons passed; deliberate
+incorrect shortfall and breach values were rejected. Mint now explains operating
+structure and local-versus-group cash, and setup reload waits for initial loading.

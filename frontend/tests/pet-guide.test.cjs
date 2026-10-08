@@ -71,3 +71,15 @@ test('every topic offers actionable suggestions and a known destination',()=>{
     const answer=guide.answerHelp(question); assert.ok(guide.guides[answer.view]); assert.ok(answer.suggestions.length>0);
   }
 });
+
+test('automatic guidance explains operating structures and restricted group cash',()=>{
+  const screen=guide.answerHelp('Explain this screen',{view:'automatic'}).text;
+  assert.match(screen,/Operating structure/);
+  assert.match(screen,/single-country.*foreign-currency/);
+  assert.match(screen,/group surplus can hide an entity shortage/);
+  assert.match(screen,/five seconds after each refresh/);
+  for(const question of ['Choose operating structure','How does an MNC use this?','Can a single country company use this?','Explain group cash']) {
+    assert.equal(guide.answerHelp(question).topic,'automatic');
+  }
+  assert.match(guide.answerHelp('More detail',{topic:'automatic'}).text,/cross-border transfers.*approvals/);
+});

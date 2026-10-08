@@ -11,7 +11,7 @@ export default function CompanyWorkspace({ recordedDemo, navigate }: { recordedD
   const [setup, setSetup] = useState<Setup | null>(null);
   const [profile, setProfile] = useState({ company_name: "", industry: "MANUFACTURING", country_code: "" });
   const [entity, setEntity] = useState({ name: "", country_code: "", functional_currency: "" });
-  const [busy, setBusy] = useState(false), [message, setMessage] = useState("");
+  const [busy, setBusy] = useState(!recordedDemo), [message, setMessage] = useState("");
   async function call(action: string, body?: object) {
     const response = await fetch(`/api/company?action=${action}`, { method: body ? "POST" : "GET", headers: body ? { "Content-Type": "application/json" } : undefined, body: body ? JSON.stringify(body) : undefined, cache: "no-store" });
     const value = await response.json();
@@ -29,7 +29,8 @@ export default function CompanyWorkspace({ recordedDemo, navigate }: { recordedD
   useEffect(() => {
     if (recordedDemo) return;
     let cancelled = false;
-    call("setup").then(value => { if (!cancelled) apply(value); }).catch(error => { if (!cancelled) setMessage(error.message); });
+    setBusy(true);
+    call("setup").then(value => { if (!cancelled) apply(value); }).catch(error => { if (!cancelled) setMessage(error.message); }).finally(() => { if (!cancelled) setBusy(false); });
     return () => { cancelled = true; };
   }, [recordedDemo]);
   const editable = !recordedDemo && Boolean(setup?.can_edit) && !busy;

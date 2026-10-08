@@ -49,6 +49,19 @@ app.add_middleware(
 )
 
 
+def response_headers(response, request_id):
+    response.headers["X-Request-ID"] = request_id
+    if settings.security_headers_enabled:
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "no-referrer"
+        response.headers["Cache-Control"] = "no-store"
+        response.headers["Content-Security-Policy"] = "default-src 'self'; frame-ancestors 'none'"
+        if settings.environment.lower() == "production":
+            response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    return response
+
+
 @app.middleware("http")
 async def enterprise_request_controls(request: Request, call_next):
     request_id = str(uuid.uuid4())
@@ -72,15 +85,15 @@ async def enterprise_request_controls(request: Request, call_next):
                 with SessionLocal() as db:
                     _user(db, actor)
         except HTTPException as exc:
-            return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+            return response_headers(JSONResponse(status_code=exc.status_code, content={"detail": exc.detail}), request_id)
         except PermissionError:
-            return JSONResponse(status_code=403, content={"detail": "Active authorized treasury account or registered connector required"})
+            return response_headers(JSONResponse(status_code=403, content={"detail": "Active authorized treasury account or registered connector required"}), request_id)
     if request.method in {"POST", "PUT", "PATCH"}:
         body = bytearray()
         async for chunk in request.stream():
             body.extend(chunk)
             if len(body) > settings.max_request_bytes:
-                return JSONResponse(status_code=413, content={"detail": "Request exceeds size limit"})
+                return response_headers(JSONResponse(status_code=413, content={"detail": "Request exceeds size limit"}), request_id)
         request._body = bytes(body)
     if (
         settings.environment.lower() == "production"
@@ -89,18 +102,10 @@ async def enterprise_request_controls(request: Request, call_next):
         and request.url.path.startswith("/api/v1/transactions/")
         and not request.headers.get("Idempotency-Key")
     ):
-        return JSONResponse(status_code=428, content={"detail": "Idempotency-Key required for production treasury write requests"})
+        return response_headers(JSONResponse(status_code=428, content={"detail": "Idempotency-Key required for production treasury write requests"}), request_id)
     with Timer() as timer:
         response = await call_next(request)
-    response.headers["X-Request-ID"] = request_id
-    if settings.security_headers_enabled:
-        response.headers["X-Content-Type-Options"] = "nosniff"
-        response.headers["X-Frame-Options"] = "DENY"
-        response.headers["Referrer-Policy"] = "no-referrer"
-        response.headers["Cache-Control"] = "no-store"
-        response.headers["Content-Security-Policy"] = "default-src 'self'; frame-ancestors 'none'"
-        if settings.environment.lower() == "production":
-            response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    response_headers(response, request_id)
     if settings.metrics_enabled:
         route = request.scope.get("route")
         observe_request(request.method, getattr(route, "path", "/unmatched"), response.status_code, timer.elapsed)

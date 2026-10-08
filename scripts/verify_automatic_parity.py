@@ -21,6 +21,46 @@ def money(value):
     return str(value.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
 
 
+def add_entity(db, definition, state):
+    entity = LegalEntity(name=definition["name"], country_code=definition["country"], functional_currency=definition["functionalCurrency"], minimum_cash=Decimal(definition["buffer"]))
+    db.add(entity); db.flush()
+    for currency in definition["bankCurrencies"]:
+        db.add(BankAccount(entity_id=entity.id, bank_name="FICTIONAL_TEST", country_code=definition["country"], currency=currency,
+            book_balance=Decimal(state["balances"][currency]), restricted_balance=Decimal(definition["restricted"]) if currency == definition["functionalCurrency"] else 0,
+            committed_outflows=Decimal(definition["committed"]) if currency == definition["functionalCurrency"] else 0))
+    for flow in state["flows"]:
+        if flow["entity"] == definition["id"]:
+            db.add(CashFlow(entity_id=entity.id, flow_type="RECEIVABLE" if flow["direction"] == "INFLOW" else "PAYABLE",
+                counterparty="FICTIONAL_TEST", currency=flow["currency"], amount=Decimal(flow["amount"]),
+                probability=Decimal(flow["probability"]), due_date=date.fromisoformat(flow["date"])))
+    return entity
+
+
+def add_rates(db, state):
+    for currency, rate in state["rates"].items():
+        db.add(FXRate(base_currency=currency, quote_currency="USD", rate=Decimal(rate), source="SYNTHETIC", as_of=datetime(2026, 10, 8)))
+
+
+def verify_entity_forecasts(source, case, definitions):
+    for definition in definitions:
+        engine = create_engine("sqlite://")
+        Base.metadata.create_all(engine)
+        try:
+            with Session(engine) as db:
+                # Independently derive opening cash and buffer from source balances
+                # and entity assumptions, rather than expected TS position totals.
+                add_entity(db, definition, case["state"])
+                add_rates(db, case["state"])
+                db.commit()
+                forecast = calculate_liquidity_forecast(db, "BASE", 13, date.fromisoformat(source["start"]))
+                expected = next(row for row in case["positions"]["entities"] if row["id"] == definition["id"])
+                context = (case["scope"], case["cycle"], definition["id"])
+                assert expected["maximumShortfall"] == money(forecast.maximum_shortfall), context
+                assert expected["firstBreach"] == forecast.first_buffer_breach_week, context
+        finally:
+            engine.dispose()
+
+
 def run():
     assert settings.group_reporting_currency == "USD", "Parity fixture requires USD reporting"
     source = json.loads((ROOT / "frontend/lib/dummy-feed.json").read_text(encoding="utf-8"))
@@ -34,18 +74,8 @@ def run():
                 definitions = source["multinational"]["entities"] if case["scope"] == "mnc" else [{"id": "DEMO", "name": "Harbor Manufacturing US", "country": "US", "functionalCurrency": "USD", "bankCurrencies": ["USD", "EUR", "GBP"], "buffer": source["buffer"], "restricted": source["restricted"], "committed": source["committed"]}]
                 entities = {}
                 for definition in definitions:
-                    entity = LegalEntity(name=definition["name"], country_code=definition["country"], functional_currency=definition["functionalCurrency"], minimum_cash=Decimal(definition["buffer"]))
-                    db.add(entity); db.flush(); entities[definition["id"]] = entity
-                    for currency in definition["bankCurrencies"]:
-                        db.add(BankAccount(entity_id=entity.id, bank_name="FICTIONAL_TEST", country_code=definition["country"], currency=currency,
-                            book_balance=Decimal(state["balances"][currency]), restricted_balance=Decimal(definition["restricted"]) if currency == definition["functionalCurrency"] else 0,
-                            committed_outflows=Decimal(definition["committed"]) if currency == definition["functionalCurrency"] else 0))
-                for currency, rate in state["rates"].items():
-                    db.add(FXRate(base_currency=currency, quote_currency="USD", rate=Decimal(rate), source="SYNTHETIC", as_of=datetime(2026, 10, 8)))
-                for flow in state["flows"]:
-                    db.add(CashFlow(entity_id=entities[flow["entity"]].id, flow_type="RECEIVABLE" if flow["direction"] == "INFLOW" else "PAYABLE",
-                        counterparty="FICTIONAL_TEST", currency=flow["currency"], amount=Decimal(flow["amount"]),
-                        probability=Decimal(flow["probability"]), due_date=date.fromisoformat(flow["date"])))
+                    entities[definition["id"]] = add_entity(db, definition, state)
+                add_rates(db, state)
                 for hedge in state["hedges"]:
                     db.add(DerivativePosition(entity_id=next(iter(entities.values())).id, instrument_type="FX_FORWARD", counterparty="FICTIONAL_TEST",
                         exposure_currency=hedge["currency"], notional=Decimal(hedge["amount"]), hedge_direction=hedge["direction"], maturity_date=date(2027, 3, 1)))
@@ -80,7 +110,8 @@ def run():
                 assert expected["residualUsd"] == money(residual_usd), case["cycle"]
         finally:
             engine.dispose()
-    print(json.dumps({"cycles": len(cases), "result": "PASS", "persistent_company_writes": False, "live_ai_calls": 0}))
+        verify_entity_forecasts(source, case, definitions)
+    print(json.dumps({"cycles": len(cases), "entity_forecasts": sum(len(case["positions"]["entities"]) for case in cases), "result": "PASS", "persistent_company_writes": False, "live_ai_calls": 0}))
 
 
 if __name__ == "__main__":

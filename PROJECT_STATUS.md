@@ -1,5 +1,13 @@
 # Global Treasury AI — Project Status: Production Phases 2–4
 
+## Parallel agent review — 8 October 2026
+
+Three agents independently reviewed calculations, interface usability and deployment/security.
+The review added 52 independent entity-forecast comparisons across the 26 dummy snapshots,
+fixed overlapping company-setup initial loading, expanded Mint's single-country/MNC guidance,
+and applied security headers and request IDs to early backend rejection responses.
+All 62 frontend regressions pass. External evidence and live execution boundaries remain unchanged.
+
 ## Automatic dummy treasury updates — 8 October 2026
 
 Automatic updates now provides separate fictional single-country and multinational manufacturing-company feeds:
