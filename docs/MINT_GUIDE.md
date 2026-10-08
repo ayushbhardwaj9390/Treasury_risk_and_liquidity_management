@@ -35,3 +35,13 @@ privacy and execution boundaries. Browser smoke checks cover mode switching,
 instruction navigation, workspace selection, tour navigation, questions, context
 changes, keyboard dismissal and responsive layout. Verification results are recorded
 in PROJECT_STATUS.md for the release. Real company login remains externally blocked.
+
+Release verification — 8 October 2026: code commit `23faf5c` passed all 68 frontend
+regressions and full Linux backend/frontend CI, including migrations and audits:
+https://github.com/ayushbhardwaj9390/Treasury_risk_and_liquidity_management/actions/runs/37733985201.
+All 13 local guide selections and tour stops passed browser checks, together with
+instruction navigation, scoped follow-ups, risk examples, clear conversation and
+Escape focus restoration. The published app passed guide/tour navigation,
+seven-step governance instructions and actual 390px mobile checks without page-wide
+overflow. Mint remains curated help; hosted identity and external evidence are
+unavailable and are not claimed verified.

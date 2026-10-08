@@ -13,7 +13,7 @@ Mint remains a curated instant guide with no live model calls or private-data ac
 Local verification: 68 frontend regressions and production compile/type/build checks
 passed. Browser checks passed all 13 guide selections and tour stops, instruction
 navigation, questions, stale-context prevention, 390px layout and Escape focus return.
-See `docs/MINT_GUIDE.md`. Hosted identity and real production evidence remain blocked.
+Code commit `23faf5c` passed full backend/frontend CI, including regressions, compile/type/build checks, calculator comparisons, migrations and dependency audits: https://github.com/ayushbhardwaj9390/Treasury_risk_and_liquidity_management/actions/runs/37733985201. Published guide/tour navigation, governance instructions and 390px mobile layout passed browser checks. See `docs/MINT_GUIDE.md`. Hosted identity and real production evidence remain blocked.
 
 ## Parallel agent review — 8 October 2026
 
