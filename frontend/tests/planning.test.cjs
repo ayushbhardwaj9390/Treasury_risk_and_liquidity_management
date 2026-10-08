@@ -5,6 +5,13 @@ const exportsObject={};
 vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../lib/planning.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText,{exports:exportsObject,TextEncoder,Date});
 const {parseCsv,validateRows,simulate,decimal,dollars}=exportsObject;
 const mapping={id:'id',date:'date',amount:'amount',currency:'currency',direction:'direction',category:'category',probability:'probability',entity:'entity'};
+test('friendly column suggestions recognise common headings and leave ambiguity unassigned',()=>{
+ const mapped=exportsObject.suggestMapping(['Reference','Due Date','Transaction Amount','Currency Code','Legal Entity']);
+ assert.equal(mapped.id,'Reference');assert.equal(mapped.date,'Due Date');assert.equal(mapped.amount,'Transaction Amount');assert.equal(mapped.currency,'Currency Code');
+ assert.equal(exportsObject.suggestMapping(['Reference','Transaction ID']).id,'');
+ assert.equal(exportsObject.suggestMapping(['id','Reference']).id,'id');
+ assert.equal(exportsObject.suggestMapping(['Invoice Total']).amount,'');
+});
 const parse = text => validateRows(parseCsv(text).rows,mapping);
 test('CSV reader handles BOM, quoted separators, escaped quotes and CRLF',()=>{
   const csv=parseCsv('\uFEFFid,entity,date,amount\r\nA,"Trading, \"\"UK\"\"",2026-10-03,1\r\n');

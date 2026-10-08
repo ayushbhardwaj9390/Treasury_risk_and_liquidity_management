@@ -4,6 +4,15 @@ export const currencies = ["USD", "GBP", "SGD", "EUR", "INR", "JPY", "CHF", "CAD
 export type Flow = { id: string; entity: string; date: string; direction: "INFLOW" | "OUTFLOW"; currency: string; amount: string; category: string; probability: string };
 export type Mapping = Record<"id" | "entity" | "date" | "direction" | "currency" | "amount" | "category" | "probability", string>;
 export type Assumptions = { start: string; weeks: number; opening: string; buffer: string; rates: Record<string, string>; delay: number; receipts: number; costs: number; oil: number; fx: number };
+export function suggestMapping(headers: string[]): Mapping {
+  const aliases: Record<keyof Mapping, string[]> = { id: ["reference", "transactionreference", "transactionid"], date: ["duedate", "paymentdate"], amount: ["cashamount", "transactionamount"], direction: ["inflowoutflow", "flowdirection"], currency: ["currencycode"], entity: ["company", "legalentity"], category: ["cashflowcategory"], probability: ["receiptprobability"] };
+  const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return Object.fromEntries(Object.entries(aliases).map(([key, names]) => {
+    const exact = headers.filter(h => h.toLowerCase() === key);
+    const matches = exact.length ? exact : headers.filter(h => names.includes(normalize(h)));
+    return [key, matches.length === 1 ? matches[0] : ""];
+  })) as Mapping;
+}
 const scale = 10n ** 32n;
 const dayMillis = 86400000;
 export function decimal(value: string, places = 6): bigint {

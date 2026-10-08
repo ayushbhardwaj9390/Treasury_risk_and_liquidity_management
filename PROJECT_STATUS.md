@@ -1,5 +1,19 @@
 # Global Treasury AI — Project Status: Production Phases 2–4
 
+## Simpler daily workflows — 8 October 2026
+
+Company onboarding highlights the next action, places profile/entity forms before
+the checklist, removes duplicate step cards and collapses technical configuration
+details. Cash planning separates sample, Excel paste and CSV/TSV input choices,
+suggests common column headings without guessing ambiguous matches and uses neutral
+feedback for validation success. CSV selection resets the tab separator left by an
+Excel paste. Rodger's planning instructions reflect the input choices.
+
+Verification: 73 frontend regressions pass; production compilation/type/build pass.
+Browser checks covered blank company saving, an Indian entity, next-step navigation,
+input-method selection and friendly Excel heading validation. No treasury calculations,
+real source authority, approval boundaries or storage semantics changed.
+
 ## Guided company onboarding and Excel clipboard input — 8 October 2026
 
 Company setup now offers blank entry, fictional single-country/MNC quick starts,

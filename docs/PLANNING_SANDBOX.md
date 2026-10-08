@@ -3,10 +3,14 @@
 Open **Upload & what if** in the application. This workspace works without a hosted backend or external credentials.
 
 Excel users can copy a table including headings and paste it into **Excel table**
-under Choose data, then choose **Check copied Excel table**. Excel's tab-separated
+under Choose data → **Paste from Excel**, then choose **Check copied Excel table**. Excel's tab-separated
 clipboard values use the same mapping, validation and calculation workflow as files.
 Format dates as YYYY-MM-DD and amounts without currency symbols or separators
 before copying. Formula text is not evaluated. Native XLSX upload is still unsupported.
+Choose **Try sample data** for the guided fictional example, or **Upload CSV / TSV**
+for a file. Common headings such as Reference, Due Date, Transaction Amount and
+Currency Code are suggested automatically. Review every mapping; ambiguous headings
+remain unassigned and require a choice.
 
 ## Use it
 
