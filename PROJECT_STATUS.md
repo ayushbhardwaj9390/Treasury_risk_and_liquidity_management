@@ -6,7 +6,7 @@ Three agents independently reviewed calculations, interface usability and deploy
 The review added 52 independent entity-forecast comparisons across the 26 dummy snapshots,
 fixed overlapping company-setup initial loading, expanded Mint's single-country/MNC guidance,
 and applied security headers and request IDs to early backend rejection responses.
-All 62 frontend regressions pass. External evidence and live execution boundaries remain unchanged.
+All 62 frontend regressions pass. Code commit `03e7d2b` passed full backend/frontend Linux CI, including six new middleware regressions, compile/type/build checks, 26 group snapshots, 52 entity forecasts, migrations and dependency audits: https://github.com/ayushbhardwaj9390/Treasury_risk_and_liquidity_management/actions/runs/37732791961. The live site passed updated Mint guidance and MNC mode checks at desktop and 390px mobile widths with no page-wide overflow. Local backend pytest stalled before results on Windows; Linux CI provides verification. External evidence and live execution boundaries remain unchanged.
 
 ## Automatic dummy treasury updates — 8 October 2026
 

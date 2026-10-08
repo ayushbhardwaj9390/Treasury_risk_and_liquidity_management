@@ -89,3 +89,11 @@ checks for 52 entity forecasts in isolated databases, using source balances and
 entity assumptions rather than expected TS totals. All comparisons passed; deliberate
 incorrect shortfall and breach values were rejected. Mint now explains operating
 structure and local-versus-group cash, and setup reload waits for initial loading.
+
+Reviewed code commit `03e7d2b` passed full Linux CI, including six security-header
+regressions and the extended entity comparisons:
+https://github.com/ayushbhardwaj9390/Treasury_risk_and_liquidity_management/actions/runs/37732791961.
+The production build and 62 frontend regressions passed. Updated live Mint guidance
+and MNC selection were verified on desktop and at 390px with no page-wide overflow.
+Local Windows backend pytest stalled without results; the Linux suite passed.
+No live external feeds or financial execution were enabled.
