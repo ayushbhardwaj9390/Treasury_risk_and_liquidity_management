@@ -71,3 +71,15 @@ reconciliation, monitoring/recovery evidence and the existing independent releas
 sign-offs. Uploading a private CSV alone cannot create these connections. Trade,
 hedge, payment and source activation decisions remain human-controlled. No external
 certification or provider access is fabricated.
+
+## Published release verification — 8 October 2026
+
+Code commit `5c250c5` is published on the authorized GitHub main branch and Vercel site.
+Complete CI passed: https://github.com/ayushbhardwaj9390/Treasury_risk_and_liquidity_management/actions/runs/37731607473.
+Local checks passed 61 frontend tests, type checks, build and 26 independent engine comparisons.
+Browser checks verified both structures, automatic progression, pause, screen switching,
+completion, invalid-quote rejection/recovery, and structure changes resetting to cycle zero.
+A deliberate local service outage preserved the previous position; retry after restoration
+advanced exactly once. The published MNC mode was checked at 1280px and 390px,
+with no page-wide overflow at 390px. Real hosted identity and external connections
+remain unverified and blocked. No schema changes were needed in this release.

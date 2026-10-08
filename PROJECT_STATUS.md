@@ -13,8 +13,7 @@ remain recorded demonstrations. The MNC example separates three country entities
 Local verification: 61 frontend tests, type checking and production build passed;
 all 26 snapshots matched unchanged Python liquidity, forecast and hedge-coverage
 engines in isolated in-memory databases. No migration is required; the schema head
-remains `0026_company_onboarding`. Complete CI and deployment verification are
-recorded in the release notes after publication. See `docs/AUTOMATIC_DUMMY_UPDATES.md`.
+remains `0026_company_onboarding`. Code commit `5c250c5` passed the complete backend and frontend CI, including regressions, compile/type checks, migrations, calculator parity and dependency audits: https://github.com/ayushbhardwaj9390/Treasury_risk_and_liquidity_management/actions/runs/37731607473. The published workspace passed desktop and 390px mobile checks, automatic progression, structure reset, rejection/recovery and last-snapshot retention during a deliberate local outage. See `docs/AUTOMATIC_DUMMY_UPDATES.md`.
 
 Real company feeds, hosted workers and external production evidence remain blocking.
 No confidential data, live AI call, provider certification or go-live approval is claimed.
