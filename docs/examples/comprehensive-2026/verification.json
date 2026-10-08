@@ -1,0 +1,24 @@
+{
+  "kind": "FICTIONAL_TEST_EVIDENCE",
+  "cash_flow_upload_records": 500,
+  "entities": 6,
+  "currencies": 12,
+  "backend_records": 2112,
+  "populated_backend_tables": 60,
+  "component_checks": 80,
+  "workflow_checks": 89,
+  "independent_arithmetic_checks": 581,
+  "production_release": "DRAFT",
+  "live_collection_worker": "BLOCKED",
+  "files": {
+    "treasury-comprehensive.xlsx": {
+      "bytes": 25435,
+      "sha256": "7cba55540928079396419d259fd3afb8f78ac9fe5a0d0cf783ab973a4b6be0db"
+    },
+    "treasury-comprehensive.csv": {
+      "bytes": 41860,
+      "sha256": "57fc42e009a641ebb101f3cdc7e24e0a345b67871d63aeff8ce44aa76567b1b3"
+    }
+  },
+  "test_pack_sha256": "99942d4c68da9523c498f8f70b4a74b29294087d838f5f777fdaaaf7d1734d9c"
+}
