@@ -1,5 +1,20 @@
 # Global Treasury AI — Project Status: Production Phases 2–4
 
+## Guided company onboarding and Excel clipboard input — 8 October 2026
+
+Company setup now offers blank entry, fictional single-country/MNC quick starts,
+country/currency code suggestions, a metadata checklist and a downloadable JSON
+reference draft. Examples cannot replace existing entries; downloaded drafts contain
+only saved dummy profile/pending entities and explicitly deny production approval.
+Cash planning accepts a copied Excel table with headings through the existing TSV
+mapping/validation workflow. Native XLSX file upload remains unsupported.
+
+Local verification passed 72 frontend regressions, type checks and production build.
+Browser checks passed both quick starts, overwrite prevention, reset, JSON export
+contents and pasted two-row cash-flow validation/calculation (USD 1,500 ending cash).
+No browser console errors were observed. No schema, engine, role or evidence-gate
+changes are required. Real storage, identity and source certifications remain blocking.
+
 ## Editable dummy setup and blue/slate theme — 8 October 2026
 
 Company setup now accepts fictional profile and entity drafts in the public demo.

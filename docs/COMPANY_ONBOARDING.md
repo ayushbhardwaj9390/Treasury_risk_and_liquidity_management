@@ -4,6 +4,21 @@ This release adds industry-neutral company onboarding. It is a dedicated-company
 product foundation, not an operationally certified universal SaaS service.
 The public Vercel site allows session-only dummy profiles and entity drafts. It cannot save real company records. Drafts survive screen navigation; reload or Clear demo setup clears them. No server storage, role grants or engine activation occurs.
 
+## Guided demo onboarding
+
+Start blank or choose a fictional single-country or multinational oil-products
+example. Examples are disabled while any profile/entity fields or saved draft are
+present; Clear demo setup starts fresh. Country and currency fields offer common
+code suggestions while allowing other codes for review. Suggestions are not
+jurisdiction or currency certifications.
+
+Your onboarding checklist counts the two metadata steps (saved profile and at least
+one pending entity), then links to cash-flow testing, connections and readiness.
+It does not claim bank connectivity, staff provisioning or production approval.
+Download demo setup draft saves a JSON reference copy of the saved profile and
+pending entities to the device. It excludes staff and engine entities, labels itself
+fictional and unapproved, and cannot be imported or used as a cash-flow CSV.
+
 ## Customer deployment boundary
 
 Provision separate frontend/backend deployments, PostgreSQL database credentials,

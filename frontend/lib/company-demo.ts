@@ -16,3 +16,10 @@ export function registerDemoEntity(setup: Setup, entity: Pick<Entity, "name" | "
   if (setup.registrations.some(row => row.name.toLowerCase() === entityName.toLowerCase())) throw Error("This demo entity name is already registered.");
   return { ...setup, registrations: [...setup.registrations, { id: setup.registrations.length + 1, name: entityName, country_code: code(entity.country_code, 2), functional_currency: code(entity.functional_currency, 3), status: "DEMO_DRAFT" }] };
 }
+export function exampleDemoSetup(structure: "single" | "multinational"): Setup {
+  let setup = saveDemoProfile(emptyDemoSetup(), { company_name: "Fictional Harbor Energy", industry: "ENERGY", country_code: "US" });
+  const rows = [{ name: "Fictional Harbor US", country_code: "US", functional_currency: "USD" }];
+  if (structure === "multinational") rows.push({ name: "Fictional Harbor Germany", country_code: "DE", functional_currency: "EUR" }, { name: "Fictional Harbor UK", country_code: "GB", functional_currency: "GBP" });
+  for (const row of rows) setup = registerDemoEntity(setup, row);
+  return setup;
+}

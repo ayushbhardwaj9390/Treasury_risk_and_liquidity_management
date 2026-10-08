@@ -27,3 +27,11 @@ test('clearing demo state returns a clean independent draft',()=>{
  const first=demo.emptyDemoSetup(),second=demo.emptyDemoSetup();first.registrations.push({name:'Test'});
  assert.equal(second.profile,null);assert.equal(second.registrations.length,0);assert.equal(second.entities.length,0);assert.equal(second.users.length,0);
 });
+test('quick-start examples contain only independent fictional metadata',()=>{
+ const single=demo.exampleDemoSetup('single'),mnc=demo.exampleDemoSetup('multinational');
+ assert.equal(single.registrations.length,1);assert.equal(mnc.registrations.length,3);
+ assert.equal(mnc.registrations.map(e=>e.functional_currency).join(','),'USD,EUR,GBP');
+ assert.equal(mnc.entities.length,0);assert.equal(mnc.users.length,0);
+ assert.ok(mnc.profile.company_name.startsWith('Fictional'));
+ mnc.registrations.pop();assert.equal(demo.exampleDemoSetup('multinational').registrations.length,3);
+});
