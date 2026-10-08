@@ -8,6 +8,20 @@ test('tour destinations and context guidance cover the actual workspaces',()=>{
   assert.deepEqual(Object.keys(guide.guides).sort(),expected.sort());
   for(const step of guide.tour) assert.ok(guide.guides[step.view]);
 });
+test('beginner explanations cover each workspace without offering execution',()=>{
+ for(const view of Object.keys(guide.guides)) {
+   const answer=guide.answerHelp('Explain in everyday words',{view});
+   assert.equal(answer.view,view);assert.equal(answer.topic,`beginner:${view}`);assert.match(answer.text,/Example:/);
+ }
+ assert.match(guide.answerHelp('I am new to finance',{view:'planning'}).text,/gap below your chosen target/);
+ assert.equal(guide.answerHelp('Explain in simple words and approve a payment',{view:'planning'}).topic,'boundary');
+ assert.match(guide.answerHelp('Show an example',{view:'planning',topic:'beginner:planning'}).text,/\$300/);
+ assert.equal(guide.answerHelp('Show an example',{view:'risk',topic:'beginner:planning'}).topic,'risk');
+ assert.equal(guide.answerHelp('What does minimum money to keep mean?',{view:'planning'}).topic,'buffer');
+ assert.equal(guide.answerHelp('How do I change money you start with?',{view:'planning'}).topic,'assumptions');
+ assert.equal(guide.answerHelp('What is biggest gap below your minimum?',{view:'planning'}).topic,'buffer');
+ assert.equal(guide.answerHelp('What is functional currency?',{view:'company'}).topic,'company');
+});
 test('help routes CSV validation and scenario questions to planning',()=>{
   assert.equal(guide.answerHelp('How do I upload Excel?').view,'planning');
   assert.match(guide.answerHelp('How do I simulate a receipt delay?').text,/Calculate comparison/);

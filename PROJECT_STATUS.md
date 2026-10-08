@@ -1,5 +1,22 @@
 # Global Treasury AI — Project Status: Production Phases 2–4
 
+## Everyday-language guidance — 8 October 2026
+
+All 13 workspaces explain their purpose in everyday words with a collapsible worked
+example. Main cash cards, planner inputs/results and weekly tables use money-in,
+money-out and minimum-target language. Excel/CSV users can expand a column example.
+Rodger offers Explain in everyday words and recognises the visible beginner labels.
+Specialist detail remains available; no engine, privacy or approval controls changed.
+
+Three independent agent reviews covered usability, calculation meaning and access
+boundaries. Corrections distinguish cash from eligible credit, target gaps from
+unpaid bills, residual currency exposure from predicted losses, and equality from
+a target breach. 74 frontend regressions and production compile/type/build passed.
+Browser checks passed copied data, renamed inputs, USD 1,500 ending cash / USD 300
+week-one target gap, and Rodger's explanation, with no observed console errors.
+This is implementation verification, not a usability study with real beginner users
+or certification for real treasury operation. External production gates remain blocked.
+
 ## Simpler daily workflows — 8 October 2026
 
 Company onboarding highlights the next action, places profile/entity forms before

@@ -12,6 +12,13 @@ for a file. Common headings such as Reference, Due Date, Transaction Amount and
 Currency Code are suggested automatically. Review every mapping; ambiguous headings
 remain unassigned and require a choice.
 
+The starting inputs now say First day of your plan, How many weeks?, Money you start
+with (USD), and Minimum money to keep (USD). Results distinguish money left without
+changes from money left after your changes. Biggest gap below your minimum measures
+the chosen minimum target, not unpaid bills. Amount above or below minimum at the
+end applies to the final week; earlier gaps remain visible in the weekly table.
+Use Show a simple example or Rodger → Explain in everyday words for context.
+
 ## Use it
 
 1. Download the fictional CSV example, or export a bank/Excel cash-flow sheet as UTF-8 CSV or TSV.
