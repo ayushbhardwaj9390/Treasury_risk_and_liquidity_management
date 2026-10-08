@@ -83,3 +83,57 @@ test('automatic guidance explains operating structures and restricted group cash
   }
   assert.match(guide.answerHelp('More detail',{topic:'automatic'}).text,/cross-border transfers.*approvals/);
 });
+
+test('every workspace has relevant bounded suggestions and a tour stop',()=>{
+  for(const view of Object.keys(guide.guides)) {
+    assert.equal(guide.suggestedQuestions(view).length,3);
+    assert.ok(guide.tour.some(step=>step.view===view));
+    const answer=guide.answerHelp('Explain this screen',{view});
+    assert.deepEqual(answer.suggestions,guide.suggestedQuestions(view));
+    for(const question of guide.suggestedQuestions(view)) assert.notEqual(guide.answerHelp(question,{view}).topic,'unknown',question);
+  }
+  assert.equal(guide.suggestedQuestions('unrecognised').length,3);
+  const questions=guide.suggestedQuestions('risk'); questions.pop();
+  assert.equal(guide.suggestedQuestions('risk').length,3);
+});
+test('specialist report questions route to actual workspaces',()=>{
+  for(const [question,view] of [
+    ['Explain hedge coverage','risk'],['What is counterparty risk?','risk'],
+    ['How do I search an analysis?','analytics'],['What is cash mobility?','funding'],
+    ['How do I use the energy pilot?','energy'],['What is forecast accuracy?','forecast'],
+    ['What is available local cash?','automatic'],['How do I pause updates?','automatic'],
+  ]) assert.equal(guide.answerHelp(question).view,view,question);
+  assert.match(guide.answerHelp('Is residual exposure a predicted loss?').text,/not predicted loss or VaR/);
+  assert.match(guide.answerHelp('More detail',{topic:'risk',view:'risk'}).text,/not a guaranteed worst-case loss/);
+});
+test('disabled actions and refresh recovery follow the current screen',()=>{
+  assert.equal(guide.answerHelp('How do I refresh workspace?',{view:'risk'}).view,'risk');
+  assert.equal(guide.answerHelp('My upload has a duplicate reference',{view:'planning'}).topic,'validation');
+  assert.match(guide.answerHelp('Why is Download comparison disabled?',{view:'planning'}).text,/Calculate comparison again/);
+  assert.match(guide.answerHelp('Why is register for review disabled?',{view:'company'}).text,/saved company profile/);
+  assert.match(guide.answerHelp('Why is Submit record disabled?',{view:'governance'}).text,/permitted role and a loaded release/);
+  assert.match(guide.answerHelp('Retry unavailable update',{view:'automatic'}).text,/last successful snapshot/);
+  assert.match(guide.answerHelp('How do I sign in?').text,/operator must configure/);
+});
+test('screen examples and navigation do not reuse unrelated follow-up topics',()=>{
+  const screen=guide.answerHelp('Explain this screen',{view:'automatic'});
+  assert.match(guide.answerHelp('Give me an example',{view:'automatic',topic:screen.topic}).text,/new EUR payable/);
+  assert.match(guide.answerHelp('More detail',{view:'automatic',topic:'upload'}).text,/fixed dummy event sequence/);
+  assert.equal(guide.answerHelp('More detail',{view:'automatic',topic:'upload'}).view,'automatic');
+});
+test('approval instructions explain governance while direct execution stays bounded',()=>{
+  assert.equal(guide.answerHelp('How do I approve a release?').topic,'governance');
+  assert.match(guide.answerHelp('How do I roll back a release?').text,/do not deploy software, restore databases or send payments/);
+  assert.match(guide.answerHelp('Approve a release for me').text,/cannot execute or approve/);
+  assert.equal(guide.answerHelp('Activate a source').topic,'boundary');
+});
+
+test('governance guide explains each real task without granting approval',()=>{
+ const steps=guide.guides.governance.steps.join(' ');
+ for(const label of ['Register a release candidate','Record review evidence','Record a parallel-run comparison','Submit your sign-off','Record a release decision']) assert.ok(steps.includes(label));
+ assert.match(steps,/document is not uploaded/);
+ assert.match(steps,/SYNTHETIC.*cannot replace required real evidence/);
+ assert.match(steps,/evidence changes invalidate earlier sign-offs/);
+ assert.match(steps,/do not deploy software/);
+ assert.equal(guide.answerHelp('What is a document fingerprint?').view,'governance');
+});

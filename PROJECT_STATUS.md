@@ -1,5 +1,20 @@
 # Global Treasury AI — Project Status: Production Phases 2–4
 
+## Mint comprehensive interface guide — 8 October 2026
+
+Mint now separates Screen guide, Ask Mint and Full app tour. One instruction at a
+time, per-screen questions, a 13-workspace guide selector and a 13-stop tour cover
+company setup, planning, automatic updates, cash/risk/funding reports, connections,
+release workflows, AI teams and analysis discovery. Follow-up context is scoped to
+the current screen; curated examples, recovery and role guidance preserve boundaries.
+All five release Task flows are explained without submitting or approving records.
+Mint remains a curated instant guide with no live model calls or private-data access.
+
+Local verification: 68 frontend regressions and production compile/type/build checks
+passed. Browser checks passed all 13 guide selections and tour stops, instruction
+navigation, questions, stale-context prevention, 390px layout and Escape focus return.
+See `docs/MINT_GUIDE.md`. Hosted identity and real production evidence remain blocked.
+
 ## Parallel agent review — 8 October 2026
 
 Three agents independently reviewed calculations, interface usability and deployment/security.
