@@ -14,6 +14,15 @@ forms, notices and Rodger's guide. Local checks passed 71 frontend regressions,
 type checks and production build; browser checks passed typing, profile saving,
 US/German entity drafts, navigation retention, duplicate rejection and reset.
 
+Code commit `8adc61f` passed full backend/frontend CI, including regressions,
+compile/type/build checks, calculator comparisons, migrations and dependency audits:
+https://github.com/ayushbhardwaj9390/Treasury_risk_and_liquidity_management/actions/runs/37736621824.
+Published company setup passed desktop and 390px phone checks, draft retention,
+reload clearing and Rodger guidance. The sample cash planner calculated a delayed
+receipt comparison and enabled its download. No browser console errors appeared
+during these checks. Real company storage, hosted identity and external production
+evidence remain blocking; these checks do not establish certified production readiness.
+
 ## Mint comprehensive interface guide — 8 October 2026
 
 Mint now separates Screen guide, Ask Mint and Full app tour. One instruction at a
