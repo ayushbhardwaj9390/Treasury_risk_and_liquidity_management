@@ -1,5 +1,10 @@
 # Global Treasury AI — Production Phases 2–4
 
+The company-tools release adds direct XLSX import, daily money/warning review,
+manual actual-versus-plan comparisons and authenticated planning/preference drafts.
+Scheduled-feed settings report freshness and missing worker configuration explicitly.
+See [release notes and availability](RELEASE_NOTES_COMPANY_TOOLS.md).
+
 Production validation candidate: see [release controls and runbooks](docs/PRODUCTION_PHASES_2_4.md).
 Production remains blocked until real external evidence and separate human sign-offs pass.
 

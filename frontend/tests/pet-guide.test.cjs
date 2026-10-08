@@ -151,3 +151,10 @@ test('governance guide explains each real task without granting approval',()=>{
  assert.match(steps,/do not deploy software/);
  assert.equal(guide.answerHelp('What is a document fingerprint?').view,'governance');
 });
+
+test('new company tools guide users without claiming activation or live collection',()=>{
+ assert.equal(guide.answerHelp('actual vs plan').view,'planning');
+ assert.match(guide.answerHelp('scheduled updates').text,/Data connections/);
+ assert.match(guide.answerHelp('company rules').text,/draft/);
+ assert.match(guide.answerHelp('upload xlsx').detail ?? guide.answerHelp('upload xlsx').text,/XLSX|worksheet/);
+});

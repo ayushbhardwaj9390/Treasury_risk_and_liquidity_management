@@ -1,4 +1,7 @@
 from .company import CompanyProfile, CompanyEntityRegistration
+from .planning_drafts import PlanningDraft
+from .company_preferences import CompanyPreferences
+from .scheduled_updates import ScheduledUpdate
 from .production import ProductionRelease, ProductionEvidence, ProductionSignoff, ProductionObservation, ProductionEvent
 from .treasury import (
     AuditLog,

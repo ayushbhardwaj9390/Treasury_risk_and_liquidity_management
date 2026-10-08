@@ -1,4 +1,5 @@
 "use client";
+import CompanyPreferences from "./CompanyPreferences";
 import { useEffect, useState } from "react";
 
 import { emptyDemoSetup, saveDemoProfile, registerDemoEntity, exampleDemoSetup, industries, type Setup } from "../lib/company-demo";
@@ -80,5 +81,6 @@ export default function CompanyWorkspace({ recordedDemo, navigate }: { recordedD
       <details><summary>Advanced: configured entities and staff roles</summary><h3>Entities configured in the treasury engine</h3>{setup?.entities.length ? <ul className="bullet-list">{setup.entities.map(e => <li key={e.id}>{e.name} · {e.functional_currency} · {e.active ? "Configured active" : "Inactive"}</li>)}</ul> : <p className="muted">No engine entities loaded. Pending registrations need a separate reviewed configuration process.</p>}
       <h3>Company staff roles</h3>{setup?.users.length ? <ul className="bullet-list">{setup.users.map((u, i) => <li key={i}>{u.display_name} · {label(u.role)}</li>)}</ul> : <p className="muted">No staff directory loaded. Your operator must provision verified accounts and roles; this screen cannot grant access.</p>}</details>
     </article>
+    <CompanyPreferences recordedDemo={recordedDemo} />
   </section>;
 }

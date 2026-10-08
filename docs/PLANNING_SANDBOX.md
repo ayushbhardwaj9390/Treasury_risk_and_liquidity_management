@@ -1,13 +1,13 @@
 # Private upload and what-if planning workspace
 
-Open **Upload & what if** in the application. This workspace works without a hosted backend or external credentials.
+Open **Cash planning** in the application. This workspace works without a hosted backend or external credentials.
 
 Excel users can copy a table including headings and paste it into **Excel table**
 under Choose data → **Paste from Excel**, then choose **Check copied Excel table**. Excel's tab-separated
 clipboard values use the same mapping, validation and calculation workflow as files.
 Format dates as YYYY-MM-DD and amounts without currency symbols or separators
-before copying. Formula text is not evaluated. Native XLSX upload is still unsupported.
-Choose **Try sample data** for the guided fictional example, or **Upload CSV / TSV**
+before copying. Formula text is not evaluated. Direct values-only XLSX upload is supported; choose a worksheet before mapping.
+Choose **Try sample data** for the guided fictional example, or **Upload Excel / CSV**
 for a file. Common headings such as Reference, Due Date, Transaction Amount and
 Currency Code are suggested automatically. Review every mapping; ambiguous headings
 remain unassigned and require a choice.
@@ -29,7 +29,7 @@ Use Show a simple example or Rodger → Explain in everyday words for context.
 
 ## File contract
 
-Required: unique reference, valid YYYY-MM-DD due date and nonzero amount with at most two decimals. Up to 500 records, 30 columns and 512 KB. Plain numbers only; no currency symbols or thousands separators. Native XLSX files and PDF statements are unsupported.
+Required: unique reference, valid YYYY-MM-DD due date and nonzero amount with at most two decimals. Up to 500 records, 30 columns and 512 KB for CSV. Plain numbers only; no currency symbols or thousands separators. XLSX files allow 2 MB compressed / 10 MB expanded; formulas, macros, external links and PDF statements are rejected.
 
 Optional columns: direction (INFLOW/OUTFLOW or CREDIT/DEBIT), currency, entity, category and receipt probability. Defaults are direction inferred from the signed amount, USD, GROUP, OTHER and probability 1. Payments cannot be probability discounted. Categories are CRUDE_PURCHASE, PRODUCT_SALE, FREIGHT, OPERATING and OTHER. Crude purchases must be payments and product sales must be receipts. Unsupported currencies, duplicate references, malformed CSV, impossible dates and inconsistent amounts are rejected.
 
@@ -54,3 +54,5 @@ Implementation commit `982e761` was pushed to `main` and deployed successfully t
 The public browser test successfully loaded the two-row synthetic `verification/planning-valid.csv`, validated and previewed it, then applied it with opening cash, buffer and FX cleared. Entering USD 1,000 opening cash, USD 800 buffer, two weeks and a ten-day receipt delay produced ending cash USD 1,500 and a week-1 shortfall of USD 300. Adding a 10% payment increase produced ending cash USD 1,450 and shortfall USD 350. Input changes disabled stale-result downloads. The downloaded comparison CSV contained the same two weekly results. No browser console errors were reported. This completed the valid-upload test that was interrupted locally.
 
 Responsive CSS includes single-column forms and mappings below 760 px and scrolling tables/navigation. The browser viewport override did not change the measured viewport (still 1,280 px); this feature's phone/tablet layout was not independently verified on real devices. No mobile compatibility certification is claimed.
+
+Authenticated company storage is available through Save or reopen a company plan. The public demo cannot persist drafts. See PLANNING_DRAFT_STORAGE.md and EXCEL_UPLOAD.md. Manual actual-versus-plan review appears below completed results; see FORECAST_REVIEW.md.

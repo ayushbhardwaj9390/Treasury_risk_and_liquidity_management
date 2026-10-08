@@ -1,5 +1,37 @@
 # Global Treasury AI — Project Status: Production Phases 2–4
 
+## Seven-area application upgrade — 8 October 2026
+
+Seven distinct implementation agents delivered separate workstreams, staggered to
+fit the active-agent limit; the application still preserves its five GPT-6 Astra
+reasoning-team architecture, deterministic engines and human approvals.
+
+- Authenticated planning drafts: checked inputs, treasurer-only saves, optimistic
+  versions and audit history in a dedicated company database.
+- Direct values-only XLSX upload: worksheet choice, column mapping and whole-dataset
+  validation, with compressed/expanded limits and formula/macro/link rejection.
+- Daily money summary and warning explanations: supplied fictional snapshots,
+  seven-day native-currency amounts, overdue references and safe review steps.
+- Plan-versus-actual review: exact-cent differences, missing observations, signed
+  bias and bounded percentage-error interpretation; no training or engine writes.
+- Company preferences: supported countries/currencies, USD minimum target and
+  reviewer roles saved as draft metadata; no policy activation or permission grants.
+- Scheduled-feed foundations: persisted requested intervals and checkpoint freshness,
+  plus an operator readiness probe that records BLOCKED attempts. A real collection
+  adapter, credentials and deployed worker are still unavailable.
+
+Migrations 0027–0029 passed clean upgrade and Alembic metadata checks. The complete
+backend suite passed 251 tests. Python compilation and independent parity checks
+passed (7 planning cases; 26 dummy cycles / 52 entity forecasts). Frontend unit,
+proxy, type/build and browser verification are recorded in
+RELEASE_NOTES_COMPANY_TOOLS.md. Native two-sheet XLSX selection and USD1500 ending
+cash / minusUSD100 actual difference were exercised in the browser.
+
+The public website remains a fictional demonstration. Production identity, hosted
+company storage, real integrations and external validation/sign-offs remain blocking
+gates. Shared multi-tenant hosting, unattended live collection and autonomous
+payments/trades are not enabled. These code additions do not constitute certification.
+
 ## Everyday-language guidance — 8 October 2026
 
 All 13 workspaces explain their purpose in everyday words with a collapsible worked

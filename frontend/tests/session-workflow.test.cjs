@@ -120,3 +120,26 @@ test('callback verified token is stored only in secure HttpOnly session cookie',
   assert.equal(response.headers.get('location'),'https://app'); assert.match(response.headers.get('set-cookie'),/__Host-treasury-session=jwt-token; Path=\/; Max-Age=900; HttpOnly; Secure/);
   assert.equal(await response.text(),'');
 });
+
+for (const name of ['planning-draft', 'company-preferences', 'scheduled-updates']) {
+  test(`${name} enforces demo, authentication, origin and bounded JSON`, async () => {
+    const request = (body='{}', origin='https://app', type='application/json') => new Request(`https://app/api/${name}`,{method:'PUT',headers:{origin,authorization:'Bearer test','content-type':type},body});
+    assert.equal((await load(`../app/api/${name}/route.ts`,{VERCEL:'1'}).PUT(request())).status,403);
+    const route = load(`../app/api/${name}/route.ts`,{API_BASE_URL:'https://backend'});
+    assert.equal((await route.GET(new Request(`https://app/api/${name}`))).status,401);
+    assert.equal((await route.PUT(request('{}','https://evil'))).status,403);
+    assert.equal((await route.PUT(request('x'.repeat(524289)))).status,413);
+    assert.equal((await route.PUT(request('{bad'))).status,400);
+    assert.equal((await route.PUT(request('{}','https://app','text/plain'))).status,415);
+  });
+  test(`${name} forwards company identity and preserves conflict without spoofing actor`,async () => {
+    const route=load(`../app/api/${name}/route.ts`,{API_BASE_URL:'https://backend'},async(url,init)=>{
+      assert.equal(url, name === 'planning-draft' ? 'https://backend/api/v1/company/planning-draft' : 'https://backend/api/v1/'+name);
+      assert.equal(init.method,'PUT'); assert.equal(init.headers.Authorization,'Bearer test');
+      assert.equal(init.headers['X-Treasury-User'],undefined);
+      return Response.json({detail:'Reload saved version'},{status:409});
+    });
+    const response=await route.PUT(new Request(`https://app/api/${name}`,{method:'PUT',headers:{origin:'https://app',authorization:'Bearer test','content-type':'application/json'},body:'{}'}));
+    assert.equal(response.status,409); assert.match((await response.json()).error,/Reload/);
+  });
+}

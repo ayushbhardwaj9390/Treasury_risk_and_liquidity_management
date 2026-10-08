@@ -1,12 +1,14 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import type { DemoSnapshot, DemoScope } from "../lib/automatic-demo";
+import DailyMoneySummary from "./DailyMoneySummary";
+import WarningReview from "./WarningReview";
 
 type Snapshot = DemoSnapshot & { calculatedAt: string };
 const money = (value: string) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(Number(value));
 const amount = (value: string) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(Number(value));
 
-export default function AutomaticUpdates({ active }: { active: boolean }) {
+export default function AutomaticUpdates({ active, onNavigate }: { active: boolean; onNavigate: (screen: "automatic" | "planning") => void }) {
   const [scope, setScope] = useState<DemoScope>("single");
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   const [running, setRunning] = useState(false), [busy, setBusy] = useState(false), [message, setMessage] = useState("");
@@ -47,6 +49,8 @@ export default function AutomaticUpdates({ active }: { active: boolean }) {
       <p role="status" aria-live="polite">{busy ? "Recalculating the complete position…" : running ? "Running · next dummy event in five seconds" : done ? "Dummy feed complete. Restart to replay from the original balances." : "Paused · start automatic updates or process one event."} {message}</p>
       {snapshot && <p className="muted">{snapshot.company} · Event {snapshot.cycle} of {snapshot.totalCycles} · Fictional planning date {snapshot.simulatedAsOf} · Calculated {new Date(snapshot.calculatedAt).toLocaleTimeString()}. This runs while this workspace is open; it is not a background bank connection.</p>}
     </article>
+    <DailyMoneySummary snapshot={snapshot} onNavigate={onNavigate} />
+    <WarningReview snapshot={snapshot} />
     {snapshot && positions && <>
       {!snapshot.state.marketHealthy && <div className="inline-error" role="alert">Dummy market refresh failed. Cash conversions, forecasts and FX exposure use the last validated rates. A rejected quote never replaces them.</div>}
       <div className="automatic-metrics">
