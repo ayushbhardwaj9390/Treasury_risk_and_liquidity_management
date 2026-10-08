@@ -4,7 +4,7 @@ const ts=require('typescript'),fs=require('node:fs'),path=require('node:path'),v
 const guide={};
 vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'../lib/pet-guide.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports:guide});
 test('tour destinations and context guidance cover the actual workspaces',()=>{
-  const expected=['start','company','overview','forecast','energy','planning','risk','funding','integrations','governance','agents','analytics'];
+  const expected=['start','company','automatic','overview','forecast','energy','planning','risk','funding','integrations','governance','agents','analytics'];
   assert.deepEqual(Object.keys(guide.guides).sort(),expected.sort());
   for(const step of guide.tour) assert.ok(guide.guides[step.view]);
 });
@@ -17,6 +17,12 @@ test('company onboarding guidance preserves activation and deployment boundaries
   assert.equal(guide.answerHelp('Help with company setup').view,'company');
   assert.match(guide.answerHelp('Help with company setup').text,/own deployment and database/);
   assert.match(guide.answerHelp('Explain this screen',{view:'company'}).text,/do not enter treasury calculations/);
+});
+
+test('automatic update help distinguishes fresh dummy calculations from live company feeds',()=>{
+  assert.equal(guide.answerHelp('How do automatic updates work?').view,'automatic');
+  assert.match(guide.answerHelp('Is this real company data?',{view:'automatic'}).text,/freshly calculated dummy/);
+  assert.match(guide.answerHelp('Explain this screen',{view:'automatic'}).text,/no confidential uploads/);
 });
 test('privacy, live activation and financial-action boundaries are explicit',()=>{
   assert.match(guide.answerHelp('Are files stored?').text,/reloading clears/);

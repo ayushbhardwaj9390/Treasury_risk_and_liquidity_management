@@ -11,6 +11,7 @@ jobs:
       - run: cd backend && PYTHONPATH=. pytest -q
       - run: cd backend && python -m compileall -q app
       - run: python scripts/verify_planning_parity.py
+      - run: python scripts/verify_automatic_parity.py
       - run: git diff --exit-code -- frontend/tests/fixtures/planning-engine.json
       - run: cd backend && DATABASE_URL=sqlite:///./migration-ci.db python -m alembic upgrade head
       - run: cd backend && DATABASE_URL=sqlite:///./migration-ci.db python -m alembic check

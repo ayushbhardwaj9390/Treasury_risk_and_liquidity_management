@@ -1,0 +1,277 @@
+{
+  "company": "Harbor Manufacturing — fictional company",
+  "start": "2026-10-08",
+  "balances": {
+    "USD": "2000000",
+    "EUR": "100000",
+    "GBP": "80000"
+  },
+  "restricted": "150000",
+  "committed": "100000",
+  "buffer": "500000",
+  "rates": {
+    "EUR": "1.10",
+    "GBP": "1.25"
+  },
+  "flows": [
+    {
+      "id": "R_USD",
+      "entity": "DEMO",
+      "date": "2026-10-10",
+      "direction": "INFLOW",
+      "currency": "USD",
+      "amount": "400000",
+      "category": "OPERATING",
+      "probability": "1"
+    },
+    {
+      "id": "P_PAYROLL",
+      "entity": "DEMO",
+      "date": "2026-10-12",
+      "direction": "OUTFLOW",
+      "currency": "USD",
+      "amount": "250000",
+      "category": "OPERATING",
+      "probability": "1"
+    },
+    {
+      "id": "P_EQUIPMENT",
+      "entity": "DEMO",
+      "date": "2026-10-15",
+      "direction": "OUTFLOW",
+      "currency": "USD",
+      "amount": "1400000",
+      "category": "OPERATING",
+      "probability": "1"
+    },
+    {
+      "id": "R_EUR",
+      "entity": "DEMO",
+      "date": "2026-10-28",
+      "direction": "INFLOW",
+      "currency": "EUR",
+      "amount": "500000",
+      "category": "OPERATING",
+      "probability": "1"
+    },
+    {
+      "id": "P_EUR",
+      "entity": "DEMO",
+      "date": "2026-10-09",
+      "direction": "OUTFLOW",
+      "currency": "EUR",
+      "amount": "100000",
+      "category": "OPERATING",
+      "probability": "1"
+    },
+    {
+      "id": "R_GBP",
+      "entity": "DEMO",
+      "date": "2026-10-30",
+      "direction": "INFLOW",
+      "currency": "GBP",
+      "amount": "50000",
+      "category": "OPERATING",
+      "probability": "1"
+    },
+    {
+      "id": "P_GBP",
+      "entity": "DEMO",
+      "date": "2026-10-19",
+      "direction": "OUTFLOW",
+      "currency": "GBP",
+      "amount": "200000",
+      "category": "OPERATING",
+      "probability": "1"
+    }
+  ],
+  "hedges": [
+    {
+      "id": "H_EUR",
+      "currency": "EUR",
+      "direction": "SELL",
+      "amount": "280000"
+    },
+    {
+      "id": "H_GBP",
+      "currency": "GBP",
+      "direction": "BUY",
+      "amount": "105000"
+    }
+  ],
+  "events": [
+    {
+      "id": "BANK_001",
+      "sequence": 1,
+      "kind": "SETTLEMENT",
+      "source": "BANK + ERP",
+      "flow": "R_USD",
+      "amount": "400000",
+      "title": "Customer receipt matched to USD invoice"
+    },
+    {
+      "id": "BANK_002",
+      "sequence": 2,
+      "kind": "SETTLEMENT",
+      "source": "BANK + ERP",
+      "flow": "P_EUR",
+      "amount": "100000",
+      "title": "EUR supplier payment matched to payable"
+    },
+    {
+      "id": "FX_003",
+      "sequence": 3,
+      "kind": "MARKET",
+      "source": "MARKET",
+      "rates": {
+        "EUR": "1.14",
+        "GBP": "1.22"
+      },
+      "title": "Dummy exchange rates changed"
+    },
+    {
+      "id": "ERP_004",
+      "sequence": 4,
+      "kind": "INVOICE",
+      "source": "ERP",
+      "invoice": {
+        "id": "P_NEW_EUR",
+        "entity": "DEMO",
+        "date": "2026-10-16",
+        "direction": "OUTFLOW",
+        "currency": "EUR",
+        "amount": "600000",
+        "category": "OPERATING",
+        "probability": "1"
+      },
+      "title": "New EUR equipment payable received"
+    },
+    {
+      "id": "ERP_004",
+      "sequence": 4,
+      "kind": "INVOICE",
+      "source": "ERP",
+      "invoice": {
+        "id": "P_NEW_EUR",
+        "entity": "DEMO",
+        "date": "2026-10-16",
+        "direction": "OUTFLOW",
+        "currency": "EUR",
+        "amount": "600000",
+        "category": "OPERATING",
+        "probability": "1"
+      },
+      "title": "New EUR equipment payable received"
+    },
+    {
+      "id": "FX_006",
+      "sequence": 6,
+      "kind": "MARKET",
+      "source": "MARKET",
+      "rates": {
+        "EUR": "-1",
+        "GBP": "1.22"
+      },
+      "title": "Invalid market quote — rejection example"
+    },
+    {
+      "id": "BANK_001",
+      "sequence": 1,
+      "kind": "SETTLEMENT",
+      "source": "BANK + ERP",
+      "flow": "R_USD",
+      "amount": "401000",
+      "title": "Conflicting reuse of bank reference — rejection example"
+    },
+    {
+      "id": "FX_008",
+      "sequence": 8,
+      "kind": "MARKET",
+      "source": "MARKET",
+      "rates": {
+        "EUR": "1.09",
+        "GBP": "1.26"
+      },
+      "title": "Valid dummy market refresh restored"
+    },
+    {
+      "id": "ERP_009",
+      "sequence": 9,
+      "kind": "DUE_DATE",
+      "source": "ERP",
+      "flow": "R_GBP",
+      "date": "2027-02-01",
+      "title": "GBP customer receipt moved beyond forecast horizon"
+    },
+    {
+      "id": "BANK_010",
+      "sequence": 10,
+      "kind": "SETTLEMENT",
+      "source": "BANK + ERP",
+      "flow": "P_PAYROLL",
+      "amount": "250000",
+      "title": "Payroll payment matched to payable"
+    },
+    {
+      "id": "BANK_011",
+      "sequence": 11,
+      "kind": "SETTLEMENT",
+      "source": "BANK + ERP",
+      "flow": "P_EQUIPMENT",
+      "amount": "1400000",
+      "title": "Equipment payment matched to payable"
+    },
+    {
+      "id": "FX_012",
+      "sequence": 12,
+      "kind": "MARKET",
+      "source": "MARKET",
+      "rates": {
+        "EUR": "1.12",
+        "GBP": "1.27"
+      },
+      "title": "Final dummy exchange-rate refresh"
+    }
+  ],
+  "multinational": {
+    "company": "Harbor Group — fictional multinational",
+    "entities": [
+      {
+        "id": "US",
+        "name": "Harbor US",
+        "country": "US",
+        "functionalCurrency": "USD",
+        "bankCurrencies": [
+          "USD"
+        ],
+        "buffer": "500000",
+        "restricted": "150000",
+        "committed": "100000"
+      },
+      {
+        "id": "EU",
+        "name": "Harbor Germany",
+        "country": "DE",
+        "functionalCurrency": "EUR",
+        "bankCurrencies": [
+          "EUR"
+        ],
+        "buffer": "50000",
+        "restricted": "0",
+        "committed": "0"
+      },
+      {
+        "id": "UK",
+        "name": "Harbor UK",
+        "country": "GB",
+        "functionalCurrency": "GBP",
+        "bankCurrencies": [
+          "GBP"
+        ],
+        "buffer": "40000",
+        "restricted": "0",
+        "committed": "0"
+      }
+    ]
+  }
+}

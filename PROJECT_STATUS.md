@@ -1,5 +1,24 @@
 # Global Treasury AI — Project Status: Production Phases 2–4
 
+## Automatic dummy treasury updates — 8 October 2026
+
+Automatic updates now provides separate fictional single-country and multinational manufacturing-company feeds:
+matched bank/ERP settlements, new invoices, delayed receipts and FX quotes refresh
+cash, forecasts, hedge coverage and risk alerts together. Duplicate/colliding events
+and invalid market quotes demonstrate rejection without contaminating positions.
+Existing hedge notionals are never executed or changed. The workspace pauses when
+hidden or left; it is not a hosted background scheduler. Other dashboard reports
+remain recorded demonstrations. The MNC example separates three country entities, local currencies and buffers from USD group totals; cross-border transfers remain subject to independent approvals.
+
+Local verification: 61 frontend tests, type checking and production build passed;
+all 26 snapshots matched unchanged Python liquidity, forecast and hedge-coverage
+engines in isolated in-memory databases. No migration is required; the schema head
+remains `0026_company_onboarding`. Complete CI and deployment verification are
+recorded in the release notes after publication. See `docs/AUTOMATIC_DUMMY_UPDATES.md`.
+
+Real company feeds, hosted workers and external production evidence remain blocking.
+No confidential data, live AI call, provider certification or go-live approval is claimed.
+
 ## Company product foundation — 6 October 2026
 
 Industry-neutral company setup now includes a persisted profile, pending legal-entity

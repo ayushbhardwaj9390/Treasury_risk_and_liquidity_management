@@ -3,6 +3,10 @@
 Production validation candidate: see [release controls and runbooks](docs/PRODUCTION_PHASES_2_4.md).
 Production remains blocked until real external evidence and separate human sign-offs pass.
 
+The **Automatic updates** workspace now demonstrates freshly calculated cash,
+forecasts, hedge coverage and risk checks from a fictional event feed. No private
+data is required. See [dummy automation and its limits](docs/AUTOMATIC_DUMMY_UPDATES.md).
+
 Company setup now supports industry-neutral profiles, pending legal-entity registrations
 and staff-role visibility in a dedicated deployment per company. See
 [company onboarding and deployment limits](docs/COMPANY_ONBOARDING.md).
