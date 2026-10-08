@@ -2,7 +2,7 @@
 
 This release adds industry-neutral company onboarding. It is a dedicated-company
 product foundation, not an operationally certified universal SaaS service.
-The public Vercel site remains a recorded demonstration; it cannot save companies.
+The public Vercel site allows session-only dummy profiles and entity drafts. It cannot save real company records. Drafts survive screen navigation; reload or Clear demo setup clears them. No server storage, role grants or engine activation occurs.
 
 ## Customer deployment boundary
 

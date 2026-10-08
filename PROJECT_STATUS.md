@@ -1,5 +1,19 @@
 # Global Treasury AI — Project Status: Production Phases 2–4
 
+## Editable dummy setup and blue/slate theme — 8 October 2026
+
+Company setup now accepts fictional profile and entity drafts in the public demo.
+Drafts stay only in browser memory, survive screen navigation and clear on reload
+or Clear demo setup. They do not configure engines, grant staff roles, write to a
+backend or clear production gates. Real saves still require company sign-in and
+the appropriate backend role. Basic names/codes/industry validation and duplicate
+entity checks protect the demo workflow. Rodger explains the distinction.
+
+The interface now uses a consistent blue/slate palette across navigation, charts,
+forms, notices and Rodger's guide. Local checks passed 71 frontend regressions,
+type checks and production build; browser checks passed typing, profile saving,
+US/German entity drafts, navigation retention, duplicate rejection and reset.
+
 ## Mint comprehensive interface guide — 8 October 2026
 
 Mint now separates Screen guide, Ask Mint and Full app tour. One instruction at a
